@@ -42,9 +42,22 @@
             <li class="nav-item" role="presentation">
                 <div>
                     <a class="btn btn-link nav-link" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-3" href="#collapse-3" role="button">
-                        <i class="fas fa-wrench"></i>&nbsp;<span>Manage Mitra</span>
+                        <i class="fas fa-wrench"></i>&nbsp;<span>Mobile Unit</span>
                     </a>
                     <div class="collapse" id="collapse-3">
+                        <div class="bg-white border rounded py-2 collapse-inner">
+                            <a class="collapse-item" href="#">Your Event List</a>
+                            <a class="collapse-item" href="#">Add New Schedule</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item" role="presentation">
+                <div>
+                    <a class="btn btn-link nav-link" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-4" href="#collapse-4" role="button">
+                        <i class="fas fa-wrench"></i>&nbsp;<span>Manage Mitra</span>
+                    </a>
+                    <div class="collapse" id="collapse-4">
                         <div class="bg-white border rounded py-2 collapse-inner">
                             <a class="collapse-item" href="#">Mitra List</a>
                             <a class="collapse-item" href="#">Add Mitra</a>

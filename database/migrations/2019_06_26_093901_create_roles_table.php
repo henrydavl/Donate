@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJadwalMobilesTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreateJadwalMobilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('jadwal_mobiles', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('utd_id');
-            $table->enum('tipe',['a','s']);
-            $table->string('city_id',4);
-            $table->text('lokasi');
-            $table->timestamp('startmob')->nullable();
-            $table->timestamp('endmob')->nullable();
+            $table->string('nama');
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ class CreateJadwalMobilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jadwal_mobiles');
+        Schema::dropIfExists('roles');
     }
 }
