@@ -15,6 +15,9 @@ class CreateVouchersTable extends Migration
     {
         Schema::create('vouchers', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->text('nama');
+            $table->bigInteger('mitra_id');
+            $table->text('image');
             $table->timestamps();
         });
     }

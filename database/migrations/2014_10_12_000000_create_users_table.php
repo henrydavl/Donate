@@ -35,6 +35,8 @@ class CreateUsersTable extends Migration
             $table->enum('isvalid', ['0','1'])->default('0');
             $table->enum('islogin', ['0','1'])->default('0');
             $table->enum('status',['0','1'])->default('0');
+            $table->timestamp('lastlogin')->nullable();
+            $table->timestamp('lastlogout')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

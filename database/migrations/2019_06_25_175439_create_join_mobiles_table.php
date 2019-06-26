@@ -15,6 +15,10 @@ class CreateJoinMobilesTable extends Migration
     {
         Schema::create('join_mobiles', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('jadwal_mobile_id');
+            $table->bigInteger('utd_id');
+            $table->enum('status',['0','1']);
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }

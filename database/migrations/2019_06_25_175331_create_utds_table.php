@@ -15,6 +15,11 @@ class CreateUtdsTable extends Migration
     {
         Schema::create('utds', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->text('nama');
+            $table->string('city_id',4);
+            $table->text('alamat');
+            $table->enum('status', ['0','1']);
+            $table->enum('akred', ['p','m','u']);
             $table->timestamps();
         });
     }

@@ -15,6 +15,11 @@ class CreateJadwalMobilesTable extends Migration
     {
         Schema::create('jadwal_mobiles', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->enum('tipe',['a','s']);
+            $table->string('city_id',4);
+            $table->text('lokasi');
+            $table->timestamp('startmob')->nullable();
+            $table->timestamp('endmob')->nullable();
             $table->timestamps();
         });
     }

@@ -15,6 +15,11 @@ class CreateMitrasTable extends Migration
     {
         Schema::create('mitras', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->text('nama');
+            $table->string('city_id',4);
+            $table->text('alamat');
+            $table->string('npwp', 22)->unique()->nullable();
+            $table->enum('status', ['0','1'])->default('0');
             $table->timestamps();
         });
     }
