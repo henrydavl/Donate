@@ -42,4 +42,26 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Role');
     }
+
+    public function transaction(){
+        return $this->hasMany('App\Transaction');
+    }
+
+    public function utd(){
+        return $this->belongsTo('App\Utd');
+    }
+
+    public function isRoot(){
+        if ($this->role->nama == 'Root' && $this->isvalid == 1 && $this->activation_token == null){
+            return true;
+        }
+        return false;
+    }
+
+    public function isAdmin(){
+        if ($this->role->nama == 'Administrator' && $this->isvalid == 1 && $this->activation_token == null){
+            return true;
+        }
+        return false;
+    }
 }

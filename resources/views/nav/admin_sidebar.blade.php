@@ -8,41 +8,37 @@
         </div>
         <ul class="nav navbar-nav text-light" id="accordionSidebar">
             <li class="nav-item" role="presentation">
-                <a class="nav-link active" href="#"><i class="fas fa-tachometer-alt"></i><span>&nbsp;Dashboard</span></a>
+                <a class="nav-link @if($pages=='dash') active @endif" href="{{route('admin')}}"><i class="fas fa-tachometer-alt"></i><span>&nbsp;Dashboard</span></a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" href="#"><i class="fas fa-tachometer-alt"></i><span>&nbsp;Transaction</span></a>
+                <a class="nav-link" href="#"><i class="fas fa-exchange-alt"></i><span>&nbsp;Transaction</span></a>
             </li>
-            <li class="nav-item" role="presentation">
-                <div>
-                    <a class="btn btn-link nav-link" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-1" href="#collapse-1" role="button">
-                        <i class="fas fa-cog"></i>&nbsp;<span>Manage User</span>
-                    </a>
-                    <div class="collapse" id="collapse-1">
-                        <div class="bg-white border rounded py-2 collapse-inner">
-                            <a class="collapse-item" href="#">Add New User</a>
-                            <a class="collapse-item" href="#">User List</a>
-                        </div>
+            <li class="nav-item">
+                <a class="btn btn-link nav-link @if($pages=='ulist' || $pages=='uadd') active @endif" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-1" href="#collapse-1" role="button">
+                    <i class="fas fa-users-cog"></i>&nbsp;<span>Manage User</span>
+                </a>
+                <div class="collapse @if($pages=='ulist' || $pages=='uadd') show @endif" id="collapse-1">
+                    <div class="bg-white border rounded py-2 collapse-inner">
+                        <a class="collapse-item @if($pages=='ulist') active @endif" href="{{ route('user.index') }}">User List</a>
+                        <a class="collapse-item @if($pages=='uadd') active @endif" href="{{ route('user.create') }}">Add User</a>
                     </div>
                 </div>
             </li>
             <li class="nav-item" role="presentation">
-                <div>
-                    <a class="btn btn-link nav-link" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-2" href="#collapse-2" role="button">
-                        <i class="fas fa-wrench"></i>&nbsp;<span>Manage UTD</span>
-                    </a>
-                    <div class="collapse" id="collapse-2">
-                        <div class="bg-white border rounded py-2 collapse-inner">
-                            <a class="collapse-item" href="#">UTD List</a>
-                            <a class="collapse-item" href="#">Add UTD</a>
-                        </div>
+                <a class="btn btn-link nav-link" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-2" href="#collapse-2" role="button">
+                    <i class="fas fa-hospital-alt"></i>&nbsp;<span>Manage UTD</span>
+                </a>
+                <div class="collapse" id="collapse-2">
+                    <div class="bg-white border rounded py-2 collapse-inner">
+                        <a class="collapse-item" href="#">UTD List</a>
+                        <a class="collapse-item" href="#">Add UTD</a>
                     </div>
                 </div>
             </li>
             <li class="nav-item" role="presentation">
                 <div>
                     <a class="btn btn-link nav-link" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-3" href="#collapse-3" role="button">
-                        <i class="fas fa-wrench"></i>&nbsp;<span>Mobile Unit</span>
+                        <i class="fas fa-car"></i>&nbsp;<span>Mobile Unit</span>
                     </a>
                     <div class="collapse" id="collapse-3">
                         <div class="bg-white border rounded py-2 collapse-inner">
@@ -55,7 +51,7 @@
             <li class="nav-item" role="presentation">
                 <div>
                     <a class="btn btn-link nav-link" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-4" href="#collapse-4" role="button">
-                        <i class="fas fa-wrench"></i>&nbsp;<span>Manage Mitra</span>
+                        <i class="fas fa-handshake"></i>&nbsp;<span>Manage Mitra</span>
                     </a>
                     <div class="collapse" id="collapse-4">
                         <div class="bg-white border rounded py-2 collapse-inner">
@@ -66,10 +62,10 @@
                 </div>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" href="#"><i class="fas fa-tachometer-alt"></i><span>&nbsp;Manage Voucher</span></a>
+                <a class="nav-link" href="#"><i class="fas fa-ticket-alt"></i><span>&nbsp;Manage Voucher</span></a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" href="#"><i class="fas fa-chart-area"></i><span>&nbsp;Broadcast Message</span></a>
+                <a class="nav-link" href="#"><i class="fas fa-bullhorn"></i><span>&nbsp;Broadcast Message</span></a>
             </li>
             <hr class="sidebar-divider">
         </ul>

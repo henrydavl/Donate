@@ -1,10 +1,10 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h1 class="h4 mb-0 font-weight-bold text-primary">User List</h1>
+        <h1 class="h4 mb-0 font-weight-bold text-primary">Administrator</h1>
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            @if(count($users) > 0)
+            @if(count($admin) > 0)
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr class="text-center">
@@ -20,13 +20,13 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($users as $user)
+                    @foreach($admin as $user)
                         <tr class="text-center">
                             <td>{{$user->id}}</td>
                             <td><img class="img-profile rounded-circle" src="{{$user->photoprofile ? asset('images/'.$user->photoprofile) : 'http://placehold.it/400x400'}}" height="45"></td>
                             <td><a href="{{route('user.edit', $user->id)}}">{{ucwords($user->name)}}</a></td>
                             <td>{{$user->email}}</td>
-                            <td>{{$user->telp}}</td>
+                            <td>{{$user->telepon}}</td>
                             <td>{{$user->alamat}}</td>
                             <td>{{ucwords($user->role->nama)}}</td>
                             <td>@if($user->isvalid == 1)<p class="text-success">Active</p> @else <p class="text-warning">Inactive</p> @endif</td>

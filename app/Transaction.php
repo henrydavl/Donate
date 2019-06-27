@@ -12,4 +12,12 @@ class Transaction extends Model
         'nhbTrams','nhctTrams','macDonTrans','metDonTrans','hbmcsa','hbmcsb','padtapTrans','pengambilanTrans','ccstopTrans','reaksiDonTrans','ketReaksiDonor',
         'noKantongDarah',
     ];
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+
+    public function utd(){
+        return $this->belongsTo('App\Utd');
+    }
 }

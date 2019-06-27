@@ -16,8 +16,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             RoleTableSeeder::class,
-            ProvinceTableSeeder::class
-            ]);
+            ProvinceTableSeeder::class,
+            UserTableSeeder::class
+        ]);
 //      $this->call(CityTableSeeder::class);
 
         Model::reguard();

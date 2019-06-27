@@ -23,5 +23,9 @@ class RoleTableSeeder extends Seeder
         $role_user = new Role();
         $role_user->nama = 'User';
         $role_user->save();
+
+        $role_user = new Role();
+        $role_user->nama = 'User Premium';
+        $role_user->save();
     }
 }
