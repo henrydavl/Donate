@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\JadwalMobile;
+use App\JoinMobile;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class BroadcastController extends Controller
+class JoinController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +16,7 @@ class BroadcastController extends Controller
      */
     public function index()
     {
-        $pages = 'cast';
-        return view('admin.broadcast.index', compact('pages'));
+        //
     }
 
     /**

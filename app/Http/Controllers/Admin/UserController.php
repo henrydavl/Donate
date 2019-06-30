@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\City;
 use App\Role;
 use App\User;
+use App\Utd;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -23,8 +25,10 @@ class UserController extends Controller
         $ids = Auth::id();
         $admin = User::all()->where('id', '!=', $ids)->where('role_id', 2)->sortBy('id');
         $users = User::all()->whereIn('role_id', [3,4])->sortBy('id');
+        $city = City::pluck('nama','id')->all();
+        $utd = Utd::pluck('nama','id')->all();
         $pages = 'ulist';
-        return view('admin.user.index', compact('pages','users','admin'));
+        return view('admin.user.index', compact('pages','users','admin','city','utd'));
     }
 
     /**
@@ -35,8 +39,10 @@ class UserController extends Controller
     public function create()
     {
         $pages = 'uadd';
+        $city = City::pluck('nama','id')->all();
+        $utd = Utd::pluck('nama','id')->all();
         $roles = Role::pluck('nama','id')->all();
-        return view('admin.user.add', compact('roles','pages'));
+        return view('admin.user.add', compact('roles','pages','city','utd'));
     }
 
     /**
@@ -96,12 +102,14 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $roles = Role::pluck('nama','id')->all();
+        $city = City::pluck('nama','id')->all();
+        $utd = Utd::pluck('nama','id')->all();
         if (Auth::id() == $id){
             $pages = 'dash';
-            return view('admin.profile', compact('user','roles','pages'));
+            return view('admin.profile', compact('user','roles','pages','city','utd'));
         }else{
             $pages = 'ulist';
-            return view('admin.user.edit', compact('user','roles','pages'));
+            return view('admin.user.edit', compact('user','roles','pages','city','utd'));
         }
     }
 
@@ -114,7 +122,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->update($request->all());
+        return redirect()->route('user.index')->with('Success', 'Profile '.$user->name.' updated');
     }
 
     /**

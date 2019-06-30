@@ -7,7 +7,7 @@
             <div class="card-header py-3">
                 <h1 class="h4 mb-0 font-weight-bold text-primary">Add New User</h1>
             </div>
-            <div class="card body">
+            <div class="card body" style="overflow-y: scroll; height: 80vh;">
                 <div class="col-md-12" style="margin-top: 1em;">
                     {!! Form::open(['method'=>'POST', 'action'=>'Admin\UserController@store']) !!}
                     <div class="form-group">
@@ -29,6 +29,34 @@
                     <div class="form-group">
                         {!! Form::label('roles', 'User Role') !!}
                         {!! Form::select('role_id', [''=>'Choose user role'] + $roles, null, ['class'=>'custom-select', 'required']) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('lhr', 'Kota Lahir') !!}
+                        {!! Form::select('kotalahir', [''=>'Choose City'] + $city, null, ['class'=>'custom-select', 'required']) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('lhr', 'Kota Domisili') !!}
+                        {!! Form::select('kotadomisili', [''=>'Choose City'] + $city, null, ['class'=>'custom-select', 'required']) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('almat', 'Alamat') !!}
+                        {!! Form::textarea('alamat', null, ['class'=>'form-control', 'required','rows' => '3', 'style' => 'resize:none', 'placeholder'=>'Alamat User..' ])!!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('job', 'Pekerjaan') !!}
+                        {!! Form::text('job', null, ['class'=>'form-control', 'required', 'placeholder'=>'Pekerjaan..' ])!!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('dob', 'Tanggal Lahir') !!}
+                        {!! Form::date('birthday', null, ['class'=>'form-control', 'required' ])!!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('gold', 'Golongan Darah') !!}
+                        {!! Form::select('goldarah', [''=>'Choose blood type', 'A' => 'A', 'B' => 'B', 'AB' => 'AB', 'O' => 'O'], null, ['class'=>'custom-select', 'required']) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('rhe', 'Rhesus Golongan Darah') !!}
+                        {!! Form::select('rhesus', [''=>'Rhesus blood', '+' => '+', '-' => '-'], null, ['class'=>'custom-select', 'required']) !!}
                     </div>
                     <div class="form-group">
                         <a href="{{ route('user.index') }}" class="btn btn-danger">Cancel</a>

@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Mitra;
+use App\Photo;
+use App\Voucher;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Intervention\Image\Facades\Image;
 
-class \VoucherController extends Controller
+class VoucherController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +18,10 @@ class \VoucherController extends Controller
      */
     public function index()
     {
-        //
+        $pages = 'vcr';
+        $vouchers = Voucher::all()->sortBy('id');
+        $mitra = Mitra::pluck('nama','id')->all();
+        return view('admin.voucher.index', compact('pages', 'vouchers', 'mitra'));
     }
 
     /**
@@ -35,7 +42,39 @@ class \VoucherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validateImage();
+        $input = $request->all();
+        $a = '';
+        if ($file = $request->file('image')){
+            $tmp = str_replace(" ", "-",$request->nama);
+            $type = $file->getClientOriginalExtension();
+            $name = $tmp."_voucherpicture.".$type;
+            $file->move('images', $name);
+            $image = Image::make('images/'.$name)->fit(500, 500);
+            $image->save();
+            $a = $name;
+        }
+        Voucher::create([
+            'nama' => $input['nama'],
+            'mitra_id' => $input['mitra_id'],
+            'image' => $a
+        ]);
+        return redirect()->route('voucher.index')->with('Success', 'Added new voucher');
+    }
+
+    private function validateImage()
+    {
+        return request()->validate([
+            'image' => 'required|image|max:5000'
+        ]);
+    }
+
+    private function validateImageUpdate()
+    {
+        return request()->validate([
+            'image' => 'sometimes|image|max:5000',
+
+        ]);
     }
 
     /**
@@ -57,7 +96,7 @@ class \VoucherController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -69,7 +108,21 @@ class \VoucherController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validateImageUpdate();
+        $vcr = Voucher::find($id);
+        $input = $request->all();
+        if ($file = $request->file('image')){
+            $tmp = str_replace(" ", "-",$request->nama);
+            $type = $file->getClientOriginalExtension();
+            $name = $tmp."_voucherpicture.".$type;
+            $file->move('images', $name);
+            $image = Image::make('images/'.$name)->fit(500, 500);
+            $image->save();
+            $input['image'] = $name;
+        }
+        $vcr->update($input);
+        return redirect()->route('voucher.index')->with('Success', 'Voucher '.$vcr->nama.' updated');
+
     }
 
     /**
@@ -80,6 +133,9 @@ class \VoucherController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $vcr = Voucher::find($id);
+        $name = $vcr->nama;
+        $vcr->delete();
+        return redirect()->route('voucher.index')->with('Success', 'Voucher '.$name.' deleted');
     }
 }

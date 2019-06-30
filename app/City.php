@@ -14,4 +14,8 @@ class City extends Model
     {
         return $this->belongsTo('App\Province');
     }
+
+    public function city(){
+        return $this->morphTo();
+    }
 }

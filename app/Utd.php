@@ -20,7 +20,11 @@ class Utd extends Model
         return $this->hasMany('App\JadwalMobile');
     }
 
-    public function user(){
-        return $this->hasMany('App\User');
+//    public function user(){
+//        return $this->hasMany('App\User');
+//    }
+
+    public function city(){
+        return $this->belongsTo('App\City');
     }
 }

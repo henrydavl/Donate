@@ -2,6 +2,6 @@
 @section('content')
     <div class="container-fluid">
         @include('inc.alert')
-        @include('admin.mitra.table.mitra')
+        @include('admin.utd.table.detail')
     </div>
 @endsection

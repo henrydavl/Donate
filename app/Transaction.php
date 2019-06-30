@@ -20,4 +20,12 @@ class Transaction extends Model
     public function utd(){
         return $this->belongsTo('App\Utd');
     }
+
+    public function joinmobile(){
+        return $this->belongsTo('App\JoinMobile');
+    }
+
+    public function voucher(){
+        return $this->belongsTo('App\Voucher');
+    }
 }

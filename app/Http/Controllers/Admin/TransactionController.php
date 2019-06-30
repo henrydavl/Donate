@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class \TransactionController extends Controller
+class TransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,10 @@ class \TransactionController extends Controller
      */
     public function index()
     {
-        //
+        $pages = 'trans';
+        $ongoings = Transaction::all()->where('timeTransEnd', null)->sortBy('id');
+        $completes = Transaction::all()->where('timeTransEnd', '!=', null)->sortBy('id');
+        return view('admin.transaction.index', compact('pages', 'ongoings', 'completes'));
     }
 
     /**

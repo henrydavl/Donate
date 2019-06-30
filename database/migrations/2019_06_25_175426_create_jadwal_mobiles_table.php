@@ -19,8 +19,8 @@ class CreateJadwalMobilesTable extends Migration
             $table->enum('tipe',['a','s']);
             $table->string('city_id',4);
             $table->text('lokasi');
-            $table->timestamp('startmob')->nullable();
-            $table->timestamp('endmob')->nullable();
+            $table->date('startmob')->nullable();
+            $table->date('endmob')->nullable();
             $table->timestamps();
         });
     }
