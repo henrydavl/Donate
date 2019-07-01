@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-group">
                         {!! Form::label('akre', 'Akreditasi') !!}
-                        {!! Form::select('akred', ['p' => 'paman','m' => 'mobile','u' => 'umum'],null, ['class'=>'custom-select', 'required' ])!!}
+                        {!! Form::select('akred', ['p' => 'Pratama','m' => 'Madya','u' => 'Utama'],null, ['class'=>'custom-select', 'required' ])!!}
                     </div>
                     <div class="form-group">
                         <a href="{{ route('utd.index') }}" class="btn btn-danger">Cancel</a>
