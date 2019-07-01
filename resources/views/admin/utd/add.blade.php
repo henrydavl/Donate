@@ -12,7 +12,7 @@
                     {!! Form::open(['method'=>'POST', 'action'=>'Admin\UTDController@store']) !!}
                     <div class="form-group">
                         {!! Form::label('name', 'Nama UTD') !!}
-                        {!! Form::text('nama', null, ['class'=>'form-control', 'required', 'placeholder'=>'Nama Mitra..' ])!!}
+                        {!! Form::text('nama', null, ['class'=>'form-control', 'required', 'placeholder'=>'Nama UTD..' ])!!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('roles', 'Kota UTD') !!}
@@ -20,10 +20,10 @@
                     </div>
                     <div class="form-group">
                         {!! Form::label('add', 'Alamat') !!}
-                        {!! Form::textarea('alamat', null, ['class'=>'form-control', 'required','rows' => '4', 'style' => 'resize:none', 'placeholder'=>'Alamat Mitra..' ])!!}
+                        {!! Form::textarea('alamat', null, ['class'=>'form-control', 'required','rows' => '4', 'style' => 'resize:none', 'placeholder'=>'Alamat UTD..' ])!!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('akre', 'Akreditasi') !!}
+                        {!! Form::label('akre', 'Akreditasi UTD') !!}
                         {!! Form::select('akred', ['p' => 'Pratama','m' => 'Madya','u' => 'Utama'],null, ['class'=>'custom-select', 'required' ])!!}
                     </div>
                     <div class="form-group">

@@ -29,6 +29,27 @@
     <script src="{{asset('assets/js/bs-charts.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="{{asset('assets/js/theme.js')}}"></script>
+    <script>
+        $(function(){
+            $("select#tipe").change(function(){
+                $(this).find("option:selected").each(function(){
+                    if ($(this).attr("value") === "i") {
+                        $("#utd").show();
+                        $("#mob").hide();
+                    } else if ($(this).attr("value") === "m") {
+                        $("#utd").hide();
+                        $("#mob").show();
+                        // document.getElementById("utd").required = true;
+                    } else {
+                        $("#mob").hide();
+                        $("#utd").hide();
+                        document.getElementById("mobid").required = false;
+                        document.getElementById("utdid").required = false;
+                    }
+                })
+            }).change();
+        });
+    </script>
 </body>
 
 </html>

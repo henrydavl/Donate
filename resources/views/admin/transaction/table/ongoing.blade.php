@@ -17,9 +17,10 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr class="text-center">
-                        <th>Id</th>
+                        {{--<th>Id</th>--}}
                         <th>Nama Pasien</th>
                         <th>Nama UTD</th>
+                        <th>Tahapan</th>
                         <th>Waktu Quiz</th>
                         <th>Waktu Scan</th>
                         <th>Waktu Selesai</th>
@@ -29,17 +30,33 @@
                     <tbody>
                     @foreach($ongoings as $ongoing)
                         <tr class="text-center">
-                            <td>{{$ongoing->id}}</td>
-                            <td>{{$ongoing->user->nama}}</td>
-                            <td>{{\Carbon\Carbon::parse($ongoing->timeQuiz)->format('d F Y')}}</td>
-                            <td>{{\Carbon\Carbon::parse($ongoing->timeStart)->format('d F Y')}}</td>
-                            <td>{{\Carbon\Carbon::parse($ongoing->timeTransEnd)->format('d F Y')}}</td>
-                            <td>{{$voucher}}</td>
+                            {{--<td>#TRANS{{str_pad($ongoing->id,4,'0', STR_PAD_LEFT)}}</td>--}}
+                            <td>{{$ongoing->user->name}}</td>
+                            <td>{{$ongoing->utd->nama}}</td>
+                            <td>@switch($ongoing->statetrans)
+                                    @case('1')
+                                        <p class="text-success">Diterima - Pengisian Form</p>
+                                        @break
+                                    @case('3')
+                                        <p class="text-success">Diterima - Sudah 2 Bulan</p>
+                                        @break
+                                    @case('5')
+                                        <p class="text-success">Diterima - Kondisi tubuh sesuai</p>
+                                        @break
+                                    @case('7')
+                                        <p class="text-success">Diterima - Tensi normal</p>
+                                        @break
+                                    @case('9')
+                                        <p class="text-success">Diterima - HB sesuai</p>
+                                        @break
+                                @endswitch
+                            </td>
+                            <td>{{\Carbon\Carbon::parse($ongoing->timeQuiz)->format('d F Y h:i:s')}}</td>
+                            <td>{{\Carbon\Carbon::parse($ongoing->timeStart)->format('d F Y h:i:s')}}</td>
+                            <td>@if($ongoing->statetrans == 10 || $ongoing->statetrans == 11){{\Carbon\Carbon::parse($ongoing->timeTransEnd)->format('d F Y h:i:s')}}@else <p class="text-success">Diproses</p> @endif</td>
                             <td width="150px"><div class="row no-gutters">
                                     <div class="col-md-6">
-                                        <button type="button" class="btn btn-info btn-circle" title="Edit" data-toggle="modal"
-                                                data-target="#editModal-{{$ongoing->id}}"><i class="fas fa-edit"></i></button>
-                                        @include('admin.transaction.edit')
+                                        <a href="{{route('transaction.edit',$ongoing->id)}}" class="btn btn-info btn-circle" title="Edit"><i class="fas fa-edit"></i></a>
                                     </div>
                                     <div class="col-md-6">
                                         {!! Form::open(['method'=>'DELETE', 'action'=> ['Admin\TransactionController@destroy', $ongoing->id], 'title' => 'Delete']) !!}

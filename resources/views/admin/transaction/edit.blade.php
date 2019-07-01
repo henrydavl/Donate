@@ -1,33 +1,274 @@
-<!-- The Modal -->
-<div class="modal fade" id="editModal-{{$ongoing->id}}">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Edit Transaction {{$ongoing->user->nama}}</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+@extends('layouts.adminMaster')
+@section('content')
+    <div class="container-fluid">
+        @include('inc.alert')
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h1 class="h4 mb-0 font-weight-bold text-primary" style="margin-top: 0.2em;">Finish Transaction</h1>
             </div>
-            <!-- Modal body -->
-            <div class="modal-body" style="text-align: left;">
-                {!! Form::model($ongoing, ['method'=>'PATCH' , 'action'=>['Admin\TransactionController@update', $ongoing->id]]) !!}
-                {{ csrf_field() }}
-                <div class="form-group">
-                    {!! Form::label('name', 'Title') !!}
-                    {!! Form::text('nama', null, ['class'=>'form-control', 'required', 'placeholder'=>'Title..' ])!!}
-                </div>
-                <div class="form-group">
-                    {!! Form::label('roles', 'Company Name') !!}
-                    {!! Form::select('mitra_id', [], null, ['class'=>'custom-select', 'required']) !!}
-                </div>
-                <div class="form-group">
-                    {!! Form::submit('Edit Transaction', ['class'=>'btn btn-primary']) !!}
-                </div>
-                {!! Form::close() !!}
-            </div>
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            <div class="card-body">
+                <fieldset>
+                    <legend>Detail Pendonor</legend>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>Nama</h6>
+                        </div>
+                        <div class="col-md-9">
+                            : {{$trans->user->name}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>Terakhir Donor</h6>
+                        </div>
+                        <div class="col-md-9">
+                            : {{$last ? \Carbon\Carbon::parse($last->timeTransEnd)->format('d F Y') : 'Belum Pernah Donor'}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>Donor ke</h6>
+                        </div>
+                        <div class="col-md-9">
+                            : {{$trans->user->ndonor != 0? $trans->user->ndonor + 1 : 1}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>Golongan Darah (rhesus)</h6>
+                        </div>
+                        <div class="col-md-9">
+                            : {{$trans->user->goldarah}}({{$trans->user->rhesus}})
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>Jenis Kelamin</h6>
+                        </div>
+                        <div class="col-md-9">
+                            : {{$trans->user->gender = 'p' ? 'Laki - laki' : 'Perempuan'}}
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Tahapan 1 (Pengisian Kuisioner & Pengecekan Terakhir Donor)</legend>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>Pertanyaan 1 (Lama Tidur)</h6>
+                        </div>
+                        <div class="col-md-9">
+                            : {{$trans->q1_jamtidur}} jam
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>Pertanyaan 2 (Minum obat dalam 3 hari)</h6>
+                        </div>
+                        <div class="col-md-9">
+                            : {{$trans->q2_obat = '0' ? 'Tidak' : 'Ya'}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        @if($trans->user->gender == 'p')
+                        <div class="col-md-3">
+                            <h6>Pertanyaan 3 (Sedang Mensturasi, Hamil, Menyusui)</h6>
+                        </div>
+                        <div class="col-md-9">
+                            : {{$trans->q3_mens = '0' ? 'Tidak' : 'Ya'}}
+                        </div>
+                        @else
+                            <div class="col-md-12">
+                                <h6 class="text-center">Pertanyaan 3 Khusus Perempuan</h6>
+                            </div>
+                        @endif
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>Pertanyaan 4 (Sakit Serius)</h6>
+                        </div>
+                        <div class="col-md-9">
+                            : {{$trans->q4_sick}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <a href="" class="btn btn-primary">Edit Tahapan 1</a>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Tahapan 2 (Pemeriksaan Kondisi Tubuh)</legend>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>Berat Badan</h6>
+                        </div>
+                        <div class="col-md-9">
+                            : {{$trans->beratUser}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>Tinggi Badan</h6>
+                        </div>
+                        <div class="col-md-9">
+                            : {{$trans->tinggiUser}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>Suhu Badan</h6>
+                        </div>
+                        <div class="col-md-9">
+                            : {{$trans->suhuUser}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <a href="" class="btn btn-primary @if($trans->statetrans != 3) disabled @endif">Edit Tahapan 2</a>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Tahapan 3 (Pengecekan Tensi & Denyut Nadi)</legend>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>Tekanan Darah (sistole/diastole)</h6>
+                        </div>
+                        <div class="col-md-9">
+                            : {{$trans->tekananA_user ? $trans->tekananA_user : 0}} mmHg / {{$trans->tekananB_user ? $trans->tekananB_user : 0}} mmHg
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>Denyut Nadi</h6>
+                        </div>
+                        <div class="col-md-9">
+                            : {{$trans->denyutNadi_user ? $trans->tekananA_user : 0}} / menit
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <a href="" class="btn btn-primary @if($trans->statetrans != 5) disabled @endif">Edit Tahapan 3</a>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Tahapan 4 (Pengecekan HB & Pengecekan Final)</legend>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>Nilai Hb</h6>
+                        </div>
+                        <div class="col-md-9">
+                            : {{$trans->nhbTrans ? $trans->nhbTrans : 0}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>Nilai Hct</h6>
+                        </div>
+                        <div class="col-md-9">
+                            : {{$trans->nhctTrans ? $trans->nhctTrans : 0}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>Macam Donor</h6>
+                        </div>
+                        <div class="col-md-9">
+                            : @if($trans->macDonTrans == 's') Sukarela @elseif($trans->macDonTrans == 'p') Pengganti @endif
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>Metode Pengambilan Darah</h6>
+                        </div>
+                        <div class="col-md-9">
+                            : @if($trans->macDonTrans == 'b') Biasa @elseif($trans->macDonTrans == 'a') Aferesis @elseif($trans->macDonTrans == 'au') Autologus @endif
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>Hb Metode Cupri Sulfat</h6>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="row no-gutters">
+                                <div class="col-md-3">
+                                    : Berat Jenis 1.053
+                                </div>
+                                <div class="col-md-3">
+                                    Berat Jenis 1.062
+                                </div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col-md-3">
+                                      @if($trans->hbmcsa == '1') > 12,5 gr % Tenggelam @elseif($trans->hbmcsa == '2') = 12,5 gr % Melayang
+                                    @elseif($trans->hbmcsa == '3') < 12,5 gr % Mengapung @endif
+                                </div>
+                                <div class="col-md-3">
+                                    @if($trans->hbmcsa == '1') > 17 gr % Tenggelam @elseif($trans->hbmcsa == '2') = 17 gr % Melayang
+                                    @elseif($trans->hbmcsa == '3') < 17 gr % Mengapung @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <a href="" class="btn btn-primary @if($trans->statetrans != 7) disabled @endif">Edit Tahapan 4</a>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Proses Donor</legend>
+                    <div class="row">
+                        <div class="col-md-3">
+                            Ditolak / Diambil Sebanyak
+                        </div>
+                        <div class="col-md-9">
+                            : 350cc
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            Jenis Kantong
+                        </div>
+                        <div class="col-md-9">
+                            : {{ucwords($trans->kantongDarah)}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            Pengambilan
+                        </div>
+                        <div class="col-md-9">
+                            : @if($trans->pengambilanTrans == 'l') Lancar @elseif($trans->pengambilanTrans == 't') Tidak Lancar
+                            @elseif($trans->pengambilanTrans == 's') Stop : {{$trans->ccstopTrans}} cc @endif
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            Reaksi Donor
+                        </div>
+                        <div class="col-md-9">
+                            : @if($trans->reaksiDonTrans == 'h') Hematoma @elseif($trans->reaksiDonTrans == 'p') Pusing
+                            @elseif($trans->reaksiDonTrans == 'm') Muntah @elseif($trans->reaksiDonTrans == 'l') {{$trans->ketReaksiDonor}} @endif
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            No. Kaantong Darah
+                        </div>
+                        <div class="col-md-9">
+                            : {{$trans->noKantongDarah}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <a href="" class="btn btn-success @if($trans->statetrans != 9) disabled @endif">Transaksi Selesai</a>
+                            <a href="" class="btn btn-danger">Batalkan Transaksi</a>
+                        </div>
+                    </div>
+                </fieldset>
             </div>
         </div>
     </div>
-</div>
+@endsection

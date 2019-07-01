@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->bigInteger('role_id')->index()->unsigned();
-            $table->text('idcard')->nullable();
+            $table->text('idcardphoto')->nullable();
             $table->text('photoprofile')->nullable();
             $table->string('kotalahir',4)->nullable();
             $table->string('kotadomisili',4)->nullable();
@@ -33,11 +33,12 @@ class CreateUsersTable extends Migration
             $table->enum('goldarah', ['A','B','AB','O'])->nullable();
             $table->enum('rhesus', ['+','-'])->nullable();
             $table->bigInteger('ndonor')->nullable();
-            $table->enum('isvalid', ['0','1'])->default('0');
+            $table->enum('isvalid', ['0','1'])->default('1');
             $table->enum('islogin', ['0','1'])->default('0');
             $table->enum('status',['0','1'])->default('0');
             $table->timestamp('lastlogin')->nullable();
             $table->timestamp('lastlogout')->nullable();
+            $table->text('token')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
