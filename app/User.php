@@ -12,7 +12,7 @@ class User extends Authenticatable
 
     protected $fillable = [
         'name', 'email', 'password','role_id','idcard','photoprofile','kotalahir','kotadomisili','alamat','job','birthday','telp','gender','alamatkantor',
-        'telpkantor','goldarah','rhesus','ndonor','isvalid','islogin','status','lastlogin','lastlogout','token','utd_id','dopoint'
+        'telpkantor','goldarah','rhesus','ndonor','lastdonor','isvalid','islogin','status','lastlogin','lastlogout','token','utd_id','dopoint'
     ];
 
     protected $hidden = [

@@ -53,11 +53,17 @@ class TransactionController extends Controller
                 if ($input['q3_mens'] == '0'){
                     if ($input['q4_sick'] == '-'){
                         $input['statetrans'] = '1';
+                    }else{
+                        return redirect()->route('transaction.index')->with('Fail', 'User pernah mengalami sakit serius');
                     }
+                }else{
+                    return redirect()->route('transaction.index')->with('Fail', 'User sedang menstruasi, hamil, atau menyusui');
                 }
+            }else{
+                return redirect()->route('transaction.index')->with('Fail', 'User mengkonsumsi obat dalam 3 hari terkahir');
             }
         }else{
-            $input['statetrans'] = '0';
+            return redirect()->route('transaction.index')->with('Fail', 'Jam tidur kurang');
         }
 
         $transa = Transaction::where('user_id', $input['user_id'])->where('statetrans', '11')->first();
@@ -161,32 +167,59 @@ class TransactionController extends Controller
         $trans = Transaction::find($id);
         $input = $request->all();
         if ($trans->statetrans == 3){
-            $input['statetrans'] = '5';
-            $input['pawal'] = Auth::id();
-            $input['timeStart'] = Carbon::now();
-            $trans->update($input);
-            return redirect()->route('transaction.edit',$id)->with('Success', 'Kondisi Tubuh Sesuai');
+            if ($input['ketBatal'] != ''){
+                $input['statetrans'] = '10';
+                $input['pawal'] = Auth::id();
+                $input['timeStart'] = Carbon::now();
+                $input['timeTransEnd'] = Carbon::now();
+                $trans->update($input);
+                return redirect()->route('transaction.index')->with('Fail', 'Transaksi Dibatalkan');
+            }else{
+                $input['statetrans'] = '5';
+                $input['pawal'] = Auth::id();
+                $input['timeStart'] = Carbon::now();
+                $trans->update($input);
+                return redirect()->route('transaction.edit',$id)->with('Success', 'Kondisi Tubuh Sesuai');
+            }
         }elseif ($trans->statetrans == 5){
-            $input['statetrans'] = '7';
-            $input['ptekanan'] = Auth::id();
-            $trans->update($input);
-            return redirect()->route('transaction.edit',$id)->with('Success', 'Tensi Sesuai');
+            if ($input['ketBatal'] != ''){
+                $input['statetrans'] = '10';
+                $input['ptekanan'] = Auth::id();
+                $input['timeTransEnd'] = Carbon::now();
+                $trans->update($input);
+                return redirect()->route('transaction.index')->with('Fail', 'Transaksi Dibatalkan');
+            }else{
+                $input['statetrans'] = '7';
+                $input['ptekanan'] = Auth::id();
+                $trans->update($input);
+                return redirect()->route('transaction.edit',$id)->with('Success', 'Tensi Sesuai');
+            }
         }elseif($trans->statetrans == 7){
-            $input['statetrans'] = '9';
-            $input['phbTrans'] = Auth::id();
-            $trans->update($input);
-            return redirect()->route('transaction.edit',$id)->with('Success', 'HB Normal');
+            if ($input['ketBatal'] != ''){
+                $input['statetrans'] = '10';
+                $input['phbTrans'] = Auth::id();
+                $input['timeTransEnd'] = Carbon::now();
+                $trans->update($input);
+                return redirect()->route('transaction.index')->with('Fail', 'Transaksi Dibatalkan');
+            }else{
+                $input['statetrans'] = '9';
+                $input['phbTrans'] = Auth::id();
+                $trans->update($input);
+                return redirect()->route('transaction.edit',$id)->with('Success', 'HB Normal');
+            }
         }elseif ($trans->statetrans == 9){
-            if (!empty($input->ketBatal)){
+            if ($input['ketBatal'] != ''){
                 $input['statetrans'] = '10';
                 $input['paftapTrans'] = Auth::id();
                 $input['timeTransEnd'] = Carbon::now();
+                $input['noKantongDarah'] = $trans->utd_id.$request->noKantong;
                 $trans->update($input);
                 return redirect()->route('transaction.index')->with('Fail', 'Transaksi Dibatalkan');
             }else{
                 $input['statetrans'] = '11';
                 $input['paftapTrans'] = Auth::id();
                 $input['timeTransEnd'] = Carbon::now();
+                $input['noKantongDarah'] = $trans->utd_id.$request->noKantong;
                 $trans->update($input);
                 return redirect()->route('transaction.index')->with('Success', 'Transaksi Selesai');
             }
@@ -209,7 +242,6 @@ class TransactionController extends Controller
     public function generatePDF($id){
         $trans = Transaction::find($id);
         $pdf = PDF::loadView('generatepdf', ['trans'=>$trans]);
-//        $pdf = PdfMerger::loadview;
         $title ='Donor - '.$trans->user->name.' - ['.$trans->timeTransEnd.']';
         return $pdf->download($title);
     }

@@ -30,7 +30,7 @@
                 </div>
                 <div class="form-group">
                     {!! Form::label('q1', 'Apakah semalam Anda tidur minimal 4 jam?') !!}
-                    {!! Form::number('q1_jamtidur', null, ['id' => 'tipe', 'class'=>'form-control', 'required' , 'min' => 0, 'placeholder' => 'Total jam tidur'])!!}
+                    {!! Form::number('q1_jamtidur', null, ['id' => 'tipe', 'class'=>'form-control', 'required' , 'min' => 4, 'placeholder' => 'Total jam tidur'])!!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('q2', 'Apakah Anda mengonsumsi obat-obatan dan jamu dalam 3 hari terakhir?') !!}

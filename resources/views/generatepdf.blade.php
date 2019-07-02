@@ -1,213 +1,180 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>A simple, clean, and responsive HTML invoice template</title>
-
-    <style>
-        .invoice-box {
-            max-width: 800px;
-            margin: auto;
-            padding: 30px;
-            border: 1px solid #eee;
-            box-shadow: 0 0 10px rgba(0, 0, 0, .15);
-            font-size: 16px;
-            line-height: 24px;
-            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-            color: #555;
-        }
-
-        .invoice-box table {
-            width: 100%;
-            line-height: inherit;
-            text-align: left;
-        }
-
-        .invoice-box table td {
-            padding: 5px;
-            vertical-align: top;
-        }
-
-        .invoice-box table tr td:nth-child(2) {
-            text-align: right;
-        }
-
-        .invoice-box table tr.top table td {
-            padding-bottom: 20px;
-        }
-
-        .invoice-box table tr.top table td.title {
-            font-size: 45px;
-            line-height: 45px;
-            color: #333;
-        }
-
-        .invoice-box table tr.information table td {
-            padding-bottom: 40px;
-        }
-
-        .invoice-box table tr.heading td {
-            background: #eee;
-            border-bottom: 1px solid #ddd;
-            font-weight: bold;
-        }
-
-        .invoice-box table tr.details td {
-            padding-bottom: 20px;
-        }
-
-        .invoice-box table tr.item td{
-            border-bottom: 1px solid #eee;
-        }
-
-        .invoice-box table tr.item.last td {
-            border-bottom: none;
-        }
-
-        .invoice-box table tr.total td:nth-child(2) {
-            border-top: 2px solid #eee;
-            font-weight: bold;
-        }
-
-        @media only screen and (max-width: 600px) {
-            .invoice-box table tr.top table td {
-                width: 100%;
-                display: block;
-                text-align: center;
-            }
-
-            .invoice-box table tr.information table td {
-                width: 100%;
-                display: block;
-                text-align: center;
-            }
-        }
-
-        /** RTL **/
-        .rtl {
-            direction: rtl;
-            font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-        }
-
-        .rtl table {
-            text-align: right;
-        }
-
-        .rtl table tr td:nth-child(2) {
-            text-align: left;
-        }
-    </style>
+    <title></title>
 </head>
-
-<body>
-<div class="invoice-box">
-    <table cellpadding="0" cellspacing="0">
-        <tr class="top">
-            <td colspan="2">
-                <table>
-                    <tr>
-                        <td class="title">
-                            <img src="https://www.sparksuite.com/images/logo.png" style="width:100%; max-width:300px;">
-                        </td>
-
-                        <td>
-                            Invoice #: 123<br>
-                            Created: January 1, 2015<br>
-                            Due: February 1, 2015
-                        </td>
-                    </tr>
-                </table>
+<body style="font-family:Arial, sans-serif;">
+<div style="border : 2px solid #70c8d2; border-radius: 20px; width: 700px; margin-left: auto; margin-right: auto;">
+    <table style="margin-top: 2em; margin-bottom: 2em;">
+        <tr>
+            <td width="500" style="text-align: left; padding-left: 1em">
+                <img height="100" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7f98014e-7a83-4138-a97a-bbc112df6319/ddaqw5w-67f71858-39c5-4db0-b816-7775609e3e97.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzdmOTgwMTRlLTdhODMtNDEzOC1hOTdhLWJiYzExMmRmNjMxOVwvZGRhcXc1dy02N2Y3MTg1OC0zOWM1LTRkYjAtYjgxNi03Nzc1NjA5ZTNlOTcucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.RPixxDJsnDpCir4TwQVunL6BmdscHYpRWOFVFYlwAm4">
             </td>
-        </tr>
-
-        <tr class="information">
-            <td colspan="2">
-                <table>
-                    <tr>
-                        <td>
-                            Sparksuite, Inc.<br>
-                            12345 Sunny Road<br>
-                            Sunnyville, CA 12345
-                        </td>
-
-                        <td>
-                            Acme Corp.<br>
-                            John Doe<br>
-                            john@example.com
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-
-        <tr class="heading">
-            <td>
-                Payment Method
-            </td>
-
-            <td>
-                Check #
-            </td>
-        </tr>
-
-        <tr class="details">
-            <td>
-                Check
-            </td>
-
-            <td>
-                1000
-            </td>
-        </tr>
-
-        <tr class="heading">
-            <td>
-                Item
-            </td>
-
-            <td>
-                Price
-            </td>
-        </tr>
-
-        <tr class="item">
-            <td>
-                Website design
-            </td>
-
-            <td>
-                $300.00
-            </td>
-        </tr>
-
-        <tr class="item">
-            <td>
-                Hosting (3 months)
-            </td>
-
-            <td>
-                $75.00
-            </td>
-        </tr>
-
-        <tr class="item last">
-            <td>
-                Domain name (1 year)
-            </td>
-
-            <td>
-                $10.00
-            </td>
-        </tr>
-
-        <tr class="total">
-            <td></td>
-
-            <td>
-                Total: $385.00
+            <td width="500" style="text-align: right; padding-right: 2em">
+                <h2>UDD Name</h2>
+                <p>Alamat</p>
+                <p>Transaksi</p>
             </td>
         </tr>
     </table>
+    <div style="width: 98%;">
+        <h3 style="margin-left: 1em; padding: 0.5em; background-color: #eee; color: #555">Detail Pendornor</h3>
+        <table style="margin-left: 2em;">
+            <tr>
+                <td style="width: 15em">Nama</td>
+                <td style="width: 20em">: $trans['name']</td>
+            </tr>
+            <tr>
+                <td style="width: 15em">Terakhir Donor</td>
+                <td style="width: 20em">: $trans['timeTransEnd']</td>
+            </tr>
+            <tr>
+                <td style="width: 15em">Donor ke</td>
+                <td style="width: 20em">: $trans['ndonor']</td>
+            </tr>
+            <tr>
+                <td style="width: 15em">Golongan Darah (rhesus)</td>
+                <td style="width: 20em">: $trans['goldarah'] ($trans['rhesus'])</td>
+            </tr>
+            <tr>
+                <td style="width: 15em">Jenis Kelamin</td>
+                <td style="width: 20em">: $trans['gender']</td>
+            </tr>
+            <tr>
+                <td style="width: 15em">State saat ini</td>
+                <td style="width: 20em">: $trans['ketstate']</td>
+            </tr>
+            <tr>
+                <td style="width: 15em">Keterangan Pembatalan</td>
+                <td style="width: 20em">: $trans['ketBatal']</td>
+            </tr>
+        </table>
+    </div>
+    <div style="width: 98%;">
+        <h3 style="margin-left: 1em; padding: 0.5em; background-color: #eee; color: #555">Tahapan 1 (Pengisian Kuisioner & Pengecekan Terakhir Donor)</h3>
+        <table style="margin-left: 2em;">
+            <tr>
+                <td style="width: 15em">Pertanyaan 1 (Lama Tidur)</td>
+                <td style="width: 20em">: $trans['q1_jamtidur']</td>
+            </tr>
+            <tr>
+                <td style="width: 15em">Pertanyaan 2 (Minum obat dalam 3 hari)</td>
+                <td style="width: 20em">: $trans['q2_obat']</td>
+            </tr>
+            <tr>
+                <td style="width: 15em">Pertanyaan 3 (Sedang Mensturasi, Hamil, Menyusui)</td>
+                <td style="width: 20em">: $trans['q3_mens']</td>
+            </tr>
+            <tr>
+                <td style="width: 15em">Pertanyaan 4 (Sakit Serius)</td>
+                <td style="width: 20em">: $trans['q4_sick']</td>
+            </tr>
+        </table>
+    </div>
+    <div style="width: 98%;">
+        <h3 style="margin-left: 1em; padding: 0.5em; background-color: #eee; color: #555">Tahapan 2 (Pemeriksaan Kondisi Tubuh)</h3>
+        <table style="margin-left: 2em;">
+            <tr>
+                <td style="width: 15em">Berat Badan</td>
+                <td style="width: 20em">: $trans['beratUser'] cm</td>
+            </tr>
+            <tr>
+                <td style="width: 15em">Tinggi Badan</td>
+                <td style="width: 20em">: $trans['tinggiUser'] Kg</td>
+            </tr>
+            <tr>
+                <td style="width: 15em">Suhu Badan</td>
+                <td style="width: 20em">: $trans['suhuUser'] °C</td>
+            </tr>
+            <tr>
+                <td style="width: 15em">Petugas</td>
+                <td style="width: 20em">: $trans['pawal']</td>
+            </tr>
+        </table>
+    </div>
+    <div style="width: 98%;">
+        <h3 style="margin-left: 1em; padding: 0.5em; background-color: #eee; color: #555">Tahapan 3 (Pengecekan Tensi & Denyut Nadi)</h3>
+        <table style="margin-left: 2em;">
+            <tr>
+                <td style="width: 15em">Tekanan Darah (sistole/diastole)</td>
+                <td style="width: 20em">: $trans['tekananA_user'] mmHg / $trans['tekananB_user'] mmHg</td>
+            </tr>
+            <tr>
+                <td style="width: 15em">Denyut Nadi</td>
+                <td style="width: 20em">: $trans['denyutNadi_user']</td>
+            </tr>
+            <tr>
+                <td style="width: 15em">Petugas</td>
+                <td style="width: 20em">: $trans['petekan']</td>
+            </tr>
+        </table>
+    </div>
+    <div style="width: 98%;">
+        <h3 style="margin-left: 1em; padding: 0.5em; background-color: #eee; color: #555">Tahapan 4 (Pengecekan HB)</h3>
+        <table style="margin-left: 2em;">
+            <tr>
+                <td style="width: 15em">Nilai Hb</td>
+                <td style="width: 20em">: $trans['nhbTrans']</td>
+            </tr>
+            <tr>
+                <td style="width: 15em">Nilai Hct</td>
+                <td style="width: 20em">: $trans['nhcTrans']</td>
+            </tr>
+            <tr>
+                <td style="width: 15em">Macam Donor</td>
+                <td style="width: 20em">: $trans['mac']</td>
+            </tr>
+            <tr>
+                <td style="width: 15em">Metode Pengambilan Darah</td>
+                <td style="width: 20em">: $trans['met']</td>
+            </tr>
+            <tr>
+                <td style="width: 15em">Hb Metode Cupri Sulfat</td>
+                <td style="width: 20em">:</td>
+            </tr>
+            <tr>
+                <td style="width: 10em">Berat Jenis 1.053</td>
+                <td>$trans['hbmcsa']</td>
+            </tr>
+            <tr>
+                <td style="width: 10em">Berat Jenis 1.062</td>
+                <td>$trans['hbmcsb']</td>
+            </tr>
+            <tr>
+                <td style="width: 15em">Petugas</td>
+                <td style="width: 20em">: $trans['phb']</td>
+            </tr>
+        </table>
+    </div>
+    <div style="width: 98%; margin-bottom: 2em">
+        <h3 style="margin-left: 1em; padding: 0.5em; background-color: #eee; color: #555">Proses Donor</h3>
+        <table style="margin-left: 2em;">
+            <tr>
+                <td style="width: 15em">Ditolak / Diambil Sebanyak </td>
+                <td style="width: 20em">: $trans['ccDarah']</td>
+            </tr>
+            <tr>
+                <td style="width: 15em">Jenis Kantong</td>
+                <td style="width: 20em">: $trans['kantongDarah']</td>
+            </tr>
+            <tr>
+                <td style="width: 15em">Pengambilan</td>
+                <td style="width: 20em">: $trans['ndonor']</td>
+            </tr>
+            <tr>
+                <td style="width: 15em">Reaksi Donor</td>
+                <td style="width: 20em">: $trans['goldarah'] ($trans['rhesus'])</td>
+            </tr>
+            <tr>
+                <td style="width: 15em">No. Kantong Darah</td>
+                <td style="width: 20em">: $trans['gender']</td>
+            </tr>
+            <tr>
+                <td style="width: 15em">Petugas</td>
+                <td style="width: 20em">: $trans['paf']</td>
+            </tr>
+        </table>
+    </div>
 </div>
 </body>
 </html>

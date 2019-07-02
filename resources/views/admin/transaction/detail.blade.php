@@ -51,7 +51,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-3">
-                            <h6 class="text-success">State saat ini</h6>
+                            <h6>State saat ini</h6>
                         </div>
                         <div class="col-md-9">
                             : @switch($trans->statetrans)
@@ -85,12 +85,25 @@
                                 @case('9')
                                 <span class="text-success">Diterima - HB sesuai</span>
                                 @break
+                                @case('10')
+                                <span class="text-danger">Transaksi Dibatalkan</span>
+                                @break
                                 @case('11')
                                 <span class="text-success">Transaksi Selesai</span>
                                 @break
                             @endswitch
                         </div>
                     </div>
+                    @if($trans->statetrans == 10)
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>Keterangan Pembatalan</h6>
+                        </div>
+                        <div class="col-md-9">
+                            : <span class="text-info">{{$trans->ketBatal ? $trans->ketBatal : $trans->ketTolak}}</span>
+                        </div>
+                    </div>
+                    @endif
                 </fieldset>
                 <fieldset>
                     <legend>Tahapan 1 (Pengisian Kuisioner & Pengecekan Terakhir Donor)</legend>
@@ -183,7 +196,7 @@
                             <h6>Denyut Nadi</h6>
                         </div>
                         <div class="col-md-9">
-                            : {{$trans->denyutNadi_user ? $trans->tekananA_user : 0}} / menit
+                            : {{$trans->denyutNadi_user ? $trans->denyutNadi_user : 0}} / menit
                         </div>
                     </div>
                     <div class="row">

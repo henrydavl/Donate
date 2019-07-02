@@ -37,7 +37,7 @@
                 </div>
                 <div class="form-group">
                     {!! Form::label('q10', 'N0. Kantong Darah') !!}
-                    {!! Form::number('noKantongDarah', null, ['class'=>'form-control', 'required', 'min' => '1'])!!}
+                    {!! Form::number('noKantong', null, ['class'=>'form-control', 'required', 'min' => '1'])!!}
                 </div>
                 <div class="form-group">
                     {!! Form::submit('Transaksi Selesai', ['class'=>'btn btn-primary']) !!}

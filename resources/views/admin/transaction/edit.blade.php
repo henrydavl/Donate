@@ -179,7 +179,7 @@
                             <h6>Denyut Nadi</h6>
                         </div>
                         <div class="col-md-9">
-                            : {{$trans->denyutNadi_user ? $trans->tekananA_user : 0}} / menit
+                            : {{$trans->denyutNadi_user ? $trans->denyutNadi_user : 0}} / menit
                         </div>
                     </div>
                     <div class="row">
