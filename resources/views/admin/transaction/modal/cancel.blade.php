@@ -44,6 +44,10 @@
                         {!! Form::text('ketReaksiDonor', null, ['id'=>'reaklanc' ,'class'=>'form-control'])!!}
                     </div>
                     <div class="form-group">
+                        {!! Form::label('q10', 'N0. Kantong Darah') !!}
+                        {!! Form::number('noKantongDarah', null, ['class'=>'form-control', 'required', 'min' => '1'])!!}
+                    </div>
+                    <div class="form-group">
                         {!! Form::label('q6', 'Keterangan Batal') !!}
                         {!! Form::textarea('ketBatal', null,
                         ['class'=>'form-control', 'required','rows' => '3', 'style' => 'resize:none', 'placeholder'=>'Keterangan Batal..' ])!!}

@@ -48,18 +48,15 @@
                                     @break
                                 @endswitch
                             </td>
-                            <td>{{\Carbon\Carbon::parse($ongoing->timeQuiz)->format('d F Y h:i:s')}}</td>
-                            <td>{{\Carbon\Carbon::parse($ongoing->timeStart)->format('d F Y h:i:s')}}</td>
-                            <td>{{\Carbon\Carbon::parse($ongoing->timeTransEnd)->format('d F Y h:i:s')}}</td>
+                            <td>{{$ongoing->timeQuiz ? $ongoing->timeQuiz : '-'}}</td>
+                            <td>{{$ongoing->timeStart ? $ongoing->timeStart : '-'}}</td>
+                            <td>{{$ongoing->timeTransEnd ? $ongoing->timeTransEnd : '-'}}</td>
                             <td width="150px"><div class="row no-gutters">
                                     <div class="col-md-6">
-                                        <a href="" type="button" class="btn btn-info btn-circle" title="Details"><i class="fas fa-search"></i></a>
+                                        <a href="{{route('transaction.show', $ongoing->id)}}" type="button" class="btn btn-info btn-circle" title="Details"><i class="fas fa-search"></i></a>
                                     </div>
                                     <div class="col-md-6">
-                                        {!! Form::open(['method'=>'DELETE', 'action'=> ['Admin\TransactionController@destroy', $ongoing->id]]) !!}
-                                        {{ csrf_field() }}
-                                        {!! Form::button('<i class="fas fa-download"></i>', ['type'=>'submit', 'class'=>'btn btn-outline-primary btn-circle', 'title'=>'Download Data']) !!}
-                                        {!! Form::close() !!}
+                                        <a href="{{route('pdf', $ongoing->id)}}" class="btn btn-outline-primary btn-circle" title="Download Detail"><i class="fas fa-download"></i></a>
                                     </div>
                                 </div>
                             </td>

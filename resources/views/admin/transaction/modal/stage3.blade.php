@@ -15,16 +15,16 @@
                     {!! Form::label('q1', 'Tekanan Darah (sistole/diastole)') !!}
                     <div class="form-row">
                         <div class="col-md-6">
-                            {!! Form::number('tekananA_user', null, ['class'=>'form-control', 'required', 'min' => '0'])!!}
+                            {!! Form::number('tekananA_user', null, ['class'=>'form-control', 'required', 'min' => '110', 'max' => '160', 'step'=>'0.01'])!!}
                         </div>
                         <div class="col-md-6">
-                            {!! Form::number('tekananB_user', null, ['class'=>'form-control', 'required', 'min' => '0'])!!}
+                            {!! Form::number('tekananB_user', null, ['class'=>'form-control', 'required', 'min' => '70', 'max' => '100', 'step'=>'0.01'])!!}
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     {!! Form::label('q3', 'Denyut nadi') !!}
-                    {!! Form::number('denyutNadi_user', null, ['class'=>'form-control', 'required', 'min' => '0'])!!}
+                    {!! Form::number('denyutNadi_user', null, ['class'=>'form-control', 'required', 'min' => '50', 'max' => '100'])!!}
                 </div>
                 <div class="form-group">
                     {!! Form::submit('Edit Tahap 3', ['class'=>'btn btn-primary']) !!}

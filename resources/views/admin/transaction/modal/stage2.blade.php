@@ -14,18 +14,18 @@
                 <div class="form-group">
                     {!! Form::label('q1', 'Berat badan pendonor') !!}
                     @if($trans->user->gender == 'p')
-                        {!! Form::number('beratUser', null, ['class'=>'form-control', 'required', 'min' => '0'])!!}
+                        {!! Form::number('beratUser', null, ['class'=>'form-control', 'required', 'min' => '45', 'step' => '0.01'])!!}
                     @else
-                        {!! Form::number('beratUser', null, ['class'=>'form-control', 'required', 'min' => '0'])!!}
+                        {!! Form::number('beratUser', null, ['class'=>'form-control', 'required', 'min' => '47', 'step' => '0.01'])!!}
                     @endif
                 </div>
                 <div class="form-group">
                     {!! Form::label('q2', 'Tinggi badan pendonor') !!}
-                    {!! Form::number('tinggiUser', null, ['class'=>'form-control', 'required', 'min' => '0'])!!}
+                    {!! Form::number('tinggiUser', null, ['class'=>'form-control', 'required', 'min' => '0', 'step' => '0.01'])!!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('q3', 'Suhu pendonor') !!}
-                    {!! Form::number('suhuUser', null, ['class'=>'form-control', 'required', 'min' => '0'])!!}
+                    {!! Form::number('suhuUser', null, ['class'=>'form-control', 'required', 'min' => '36.6', 'max' => '37.5', 'step' => '0.01'])!!}
                 </div>
                 <div class="form-group">
                     {!! Form::submit('Edit Tahap 2', ['class'=>'btn btn-primary']) !!}

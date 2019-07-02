@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Transaction;
 use App\User;
 use App\Utd;
+use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -87,7 +88,33 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        //
+        $trans = Transaction::find($id);
+        $pages = 'trans';
+        $last = Transaction::where('user_id', $trans->user_id)->where('statetrans', '11')->first();
+        $pawal = '';
+        $ptekanan = '';
+        $phb = '';
+        $paf = '';
+        if ($trans->pawal != null){
+            $u = User::find($trans->pawal);
+            $pawal = $u->name;
+        }
+        if ($trans->ptekanan != null){
+            $uu = User::find($trans->ptekanan);
+            $ptekanan = $uu->name;
+        }
+        if ($trans->phbTrans != null){
+            $uuu = User::find($trans->phbTrans);
+            $phb = $uuu->name;
+        }
+        if ($trans->paftapTrans != null){
+            $u4 = User::find($trans->paftapTrans);
+            $paf = $u4->name;
+        }
+        if ($last){
+            return view('admin.transaction.detail', compact('trans','pages', 'last','phb','pawal','ptekanan','paf'));
+        }
+        return view('admin.transaction.detail', compact('trans','pages', 'last','phb','pawal','ptekanan','paf'));
     }
 
     /**
@@ -101,10 +128,25 @@ class TransactionController extends Controller
         $trans = Transaction::find($id);
         $pages = 'trans';
         $last = Transaction::where('user_id', $trans->user_id)->where('statetrans', '11')->first();
-        if ($last){
-            return view('admin.transaction.edit', compact('trans','pages', 'last'));
+        $pawal = '';
+        $ptekanan = '';
+        $phb = '';
+        if ($trans->pawal != null){
+            $u = User::find($trans->pawal);
+            $pawal = $u->name;
         }
-        return view('admin.transaction.edit', compact('trans','pages', 'last'));
+        if ($trans->ptekanan != null){
+            $uu = User::find($trans->ptekanan);
+            $ptekanan = $uu->name;
+        }
+        if ($trans->phbTrans != null){
+            $uuu = User::find($trans->phbTrans);
+            $phb = $uuu->name;
+        }
+        if ($last){
+            return view('admin.transaction.edit', compact('trans','pages', 'last','phb','pawal','ptekanan'));
+        }
+        return view('admin.transaction.edit', compact('trans','pages', 'last','phb','pawal','ptekanan'));
     }
 
     /**
@@ -118,9 +160,38 @@ class TransactionController extends Controller
     {
         $trans = Transaction::find($id);
         $input = $request->all();
-        
-
-        return redirect()->route('transaction.edit',$id);
+        if ($trans->statetrans == 3){
+            $input['statetrans'] = '5';
+            $input['pawal'] = Auth::id();
+            $input['timeStart'] = Carbon::now();
+            $trans->update($input);
+            return redirect()->route('transaction.edit',$id)->with('Success', 'Kondisi Tubuh Sesuai');
+        }elseif ($trans->statetrans == 5){
+            $input['statetrans'] = '7';
+            $input['ptekanan'] = Auth::id();
+            $trans->update($input);
+            return redirect()->route('transaction.edit',$id)->with('Success', 'Tensi Sesuai');
+        }elseif($trans->statetrans == 7){
+            $input['statetrans'] = '9';
+            $input['phbTrans'] = Auth::id();
+            $trans->update($input);
+            return redirect()->route('transaction.edit',$id)->with('Success', 'HB Normal');
+        }elseif ($trans->statetrans == 9){
+            if (!empty($input->ketBatal)){
+                $input['statetrans'] = '10';
+                $input['paftapTrans'] = Auth::id();
+                $input['timeTransEnd'] = Carbon::now();
+                $trans->update($input);
+                return redirect()->route('transaction.index')->with('Fail', 'Transaksi Dibatalkan');
+            }else{
+                $input['statetrans'] = '11';
+                $input['paftapTrans'] = Auth::id();
+                $input['timeTransEnd'] = Carbon::now();
+                $trans->update($input);
+                return redirect()->route('transaction.index')->with('Success', 'Transaksi Selesai');
+            }
+        }
+        return redirect()->route('transaction.edit',$id)->with('Fail', 'Terjadi kesalahan, silahkan coba lagi');
     }
 
     /**
@@ -133,5 +204,13 @@ class TransactionController extends Controller
     {
         Transaction::find($id)->delete();
         return redirect()->route('transaction.index')->with('Success', 'Transaksi dihapus');
+    }
+
+    public function generatePDF($id){
+        $trans = Transaction::find($id);
+        $pdf = PDF::loadView('generatepdf', ['trans'=>$trans]);
+//        $pdf = PdfMerger::loadview;
+        $title ='Donor - '.$trans->user->name.' - ['.$trans->timeTransEnd.']';
+        return $pdf->download($title);
     }
 }

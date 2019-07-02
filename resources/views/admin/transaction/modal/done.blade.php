@@ -13,7 +13,7 @@
                 {{ csrf_field() }}
                 <div class="form-group">
                     {!! Form::label('q1', 'Ditolak / Diambil Sebanyak') !!}
-                    {!! Form::number('ccDarah', null, ['class'=>'form-control', 'required', 'min' => '0'])!!}
+                    {!! Form::select('ccDarah', ['' => '----', '250' => '250cc', '350' => '350cc', '450' => '450cc'], null, ['class'=>'custom-select', 'required'])!!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('q2', 'Janis Kantong') !!}
@@ -34,6 +34,10 @@
                 <div class="form-group" id="reak">
                     {!! Form::label('q4', 'Reaksi Lainnya') !!}
                     {!! Form::text('ketReaksiDonor', null, ['id'=>'reaklan' ,'class'=>'form-control'])!!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('q10', 'N0. Kantong Darah') !!}
+                    {!! Form::number('noKantongDarah', null, ['class'=>'form-control', 'required', 'min' => '1'])!!}
                 </div>
                 <div class="form-group">
                     {!! Form::submit('Transaksi Selesai', ['class'=>'btn btn-primary']) !!}

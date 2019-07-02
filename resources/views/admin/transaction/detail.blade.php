@@ -55,20 +55,38 @@
                         </div>
                         <div class="col-md-9">
                             : @switch($trans->statetrans)
+                                @case('0')
+                                <p class="text-danger">Ditolak - Pengisian Form</p>
+                                @break
                                 @case('1')
                                 <span class="text-success">Diterima - Pengisian Form</span>
+                                @break
+                                @case('2')
+                                <p class="text-danger">Ditolak - Belum 2 Bulan</p>
                                 @break
                                 @case('3')
                                 <span class="text-success">Diterima - Sudah 2 Bulan</span>
                                 @break
+                                @case('4')
+                                <p class="text-danger">Ditolak - Berat badan kurang</p>
+                                @break
                                 @case('5')
                                 <span class="text-success">Diterima - Kondisi tubuh sesuai</span>
+                                @break
+                                @case('6')
+                                <p class="text-danger">Ditolak - Tensi Tinggi / Rendah</p>
                                 @break
                                 @case('7')
                                 <span class="text-success">Diterima - Tensi normal</span>
                                 @break
+                                @case('8')
+                                <p class="text-danger">Ditolak - HB rendah</p>
+                                @break
                                 @case('9')
                                 <span class="text-success">Diterima - HB sesuai</span>
+                                @break
+                                @case('11')
+                                <span class="text-success">Transaksi Selesai</span>
                                 @break
                             @endswitch
                         </div>
@@ -94,12 +112,12 @@
                     </div>
                     <div class="row">
                         @if($trans->user->gender == 'p')
-                        <div class="col-md-3">
-                            <h6>Pertanyaan 3 (Sedang Mensturasi, Hamil, Menyusui)</h6>
-                        </div>
-                        <div class="col-md-9">
-                            : {{$trans->q3_mens == '0' ? 'Tidak' : 'Ya'}}
-                        </div>
+                            <div class="col-md-3">
+                                <h6>Pertanyaan 3 (Sedang Mensturasi, Hamil, Menyusui)</h6>
+                            </div>
+                            <div class="col-md-9">
+                                : {{$trans->q3_mens == '0' ? 'Tidak' : 'Ya'}}
+                            </div>
                         @else
                             <div class="col-md-12">
                                 <h6 class="text-center">Pertanyaan 3 Khusus Perempuan</h6>
@@ -114,13 +132,6 @@
                             : {{$trans->q4_sick}}
                         </div>
                     </div>
-                    {{--<div class="row">--}}
-                        {{--<div class="col-md-12 text-right">--}}
-                            {{--<button type="button" class="btn btn-primary" data-toggle="modal"--}}
-                                    {{--data-target="#stage1">Edit Tahapan 1</button>--}}
-                            {{--@include('admin.transaction.modal.stage1')--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
                 </fieldset>
                 <fieldset>
                     <legend>Tahapan 2 (Pemeriksaan Kondisi Tubuh)</legend>
@@ -156,13 +167,6 @@
                             : <b>{{$pawal}}</b>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12 text-right">
-                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#stage2" @if($trans->statetrans != 3) disabled @endif>Edit Tahapan 2</button>
-                            @include('admin.transaction.modal.stage2')
-                        </div>
-                    </div>
                 </fieldset>
                 <fieldset>
                     <legend>Tahapan 3 (Pengecekan Tensi & Denyut Nadi)</legend>
@@ -188,13 +192,6 @@
                         </div>
                         <div class="col-md-9">
                             : <b>{{$ptekanan}}</b>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 text-right">
-                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#stage3" @if($trans->statetrans != 5) disabled @endif>Edit Tahapan 3</button>
-                            @include('admin.transaction.modal.stage3')
                         </div>
                     </div>
                 </fieldset>
@@ -265,13 +262,6 @@
                             : <b>{{$phb}}</b>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12 text-right">
-                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#stage4"  @if($trans->statetrans != 7) disabled @endif>Edit Tahapan 4</button>
-                            @include('admin.transaction.modal.stage4')
-                        </div>
-                    </div>
                 </fieldset>
                 <fieldset>
                     <legend>Proses Donor</legend>
@@ -318,13 +308,11 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12 text-right">
-                            <button type="button" class="btn btn-success" data-toggle="modal"
-                                    data-target="#done" @if($trans->statetrans != 9) disabled @endif>Transaksi Selesai</button>
-                            @include('admin.transaction.modal.done')
-                            <button type="button" class="btn btn-danger" data-toggle="modal"
-                                    data-target="#cancel">Batalkan Transaksi</button>
-                            @include('admin.transaction.modal.cancel')
+                        <div class="col-md-3">
+                            <h6><b>Petugas</b></h6>
+                        </div>
+                        <div class="col-md-9">
+                            : <b>{{$paf}}</b>
                         </div>
                     </div>
                 </fieldset>

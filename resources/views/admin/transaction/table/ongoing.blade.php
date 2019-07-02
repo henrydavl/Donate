@@ -51,18 +51,12 @@
                                         @break
                                 @endswitch
                             </td>
-                            <td>{{\Carbon\Carbon::parse($ongoing->timeQuiz)->format('d F Y h:i:s')}}</td>
-                            <td>{{\Carbon\Carbon::parse($ongoing->timeStart)->format('d F Y h:i:s')}}</td>
+                            <td>{{$ongoing->timeQuiz ? $ongoing->timeQuiz : '-'}}</td>
+                            <td>{{$ongoing->timeStart ? $ongoing->timeStart : '-'}}</td>
                             <td>@if($ongoing->statetrans == 10 || $ongoing->statetrans == 11){{\Carbon\Carbon::parse($ongoing->timeTransEnd)->format('d F Y h:i:s')}}@else <p class="text-success">Diproses</p> @endif</td>
                             <td width="150px"><div class="row no-gutters">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <a href="{{route('transaction.edit',$ongoing->id)}}" class="btn btn-info btn-circle" title="Edit"><i class="fas fa-edit"></i></a>
-                                    </div>
-                                    <div class="col-md-6">
-                                        {!! Form::open(['method'=>'DELETE', 'action'=> ['Admin\TransactionController@destroy', $ongoing->id], 'title' => 'Delete']) !!}
-                                        {{ csrf_field() }}
-                                        {!! Form::button('<i class="fas fa-trash"></i>', ['type'=>'submit', 'class'=>'btn btn-danger btn-circle', 'title'=>'Delete']) !!}
-                                        {!! Form::close() !!}
                                     </div>
                                 </div>
                             </td>

@@ -34,6 +34,7 @@ Route::group(['middleware'=>['admin']], function (){
     Route::post('admin/dashboard/join', 'Admin\EventController@join');
     Route::get('admin/dashboard/reject', 'Admin\EventController@reject')->name('event.reject');
     Route::post('admin/dashboard/reject', 'Admin\EventController@reject');
+    Route::get('generate-pdf/{id}','Admin\TransactionController@generatePDF')->name('pdf');
 
     Route::resource('/admin/user', 'Admin\UserController');
     Route::resource('/admin/transaction', 'Admin\TransactionController');
