@@ -1,6 +1,6 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h1 class="h4 mb-0 font-weight-bold text-primary" style="margin-top: 0.2em;">Transaction List</h1>
+        <h1 class="h4 mb-0 font-weight-bold text-primary" style="margin-top: 0.2em;">Transaksi Selesai</h1>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -56,9 +56,9 @@
                                         <a href="" type="button" class="btn btn-info btn-circle" title="Details"><i class="fas fa-search"></i></a>
                                     </div>
                                     <div class="col-md-6">
-                                        {!! Form::open(['method'=>'DELETE', 'action'=> ['Admin\TransactionController@destroy', $ongoing->id], 'title' => 'Delete']) !!}
+                                        {!! Form::open(['method'=>'DELETE', 'action'=> ['Admin\TransactionController@destroy', $ongoing->id]]) !!}
                                         {{ csrf_field() }}
-                                        {!! Form::button('<i class="fas fa-trash"></i>', ['type'=>'submit', 'class'=>'btn btn-danger btn-circle', 'title'=>'Delete']) !!}
+                                        {!! Form::button('<i class="fas fa-download"></i>', ['type'=>'submit', 'class'=>'btn btn-outline-primary btn-circle', 'title'=>'Download Data']) !!}
                                         {!! Form::close() !!}
                                     </div>
                                 </div>

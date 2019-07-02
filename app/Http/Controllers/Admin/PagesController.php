@@ -17,14 +17,14 @@ class PagesController extends Controller
     }
 
     public function dashboard(){
-        $utd = Transaction::where('join_mobile_id', null)->count();
-        $mobile = Transaction::where('utd_id', null)->count();
+        $ids = Auth::user()->utd_id;
+        $utd = Transaction::where('utd_id', $ids)->count();
         $pages = 'dash';
         $finish = JadwalMobile::where('status', '1')->count();
         $ongoing = JadwalMobile::where('status', '0')->count();
         $events = JadwalMobile::all()->where('tipe','a')->where('status',0);
         $joins = JoinMobile::all();
 
-        return view('admin.dashboard', compact('utd','mobile','pages','finish','ongoing', 'events', 'joins'));
+        return view('admin.dashboard', compact('utd','pages','finish','ongoing', 'events', 'joins'));
     }
 }

@@ -2,7 +2,7 @@
     <div class="card-header py-3">
         <div class="row no-gutters">
             <div class="col md-10">
-                <h1 class="h4 mb-0 font-weight-bold text-primary" style="margin-top: 0.2em;">Waiting List</h1>
+                <h1 class="h4 mb-0 font-weight-bold text-primary" style="margin-top: 0.2em;">Daftar Antrian</h1>
             </div>
             <div class="col md-2">
                 <button type="button" class="btn btn-dark btn-circle float-right" title="Add New Transaction" data-toggle="modal"

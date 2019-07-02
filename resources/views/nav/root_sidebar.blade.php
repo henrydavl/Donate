@@ -2,8 +2,7 @@
     <div class="container-fluid d-flex flex-column p-0">
         <div class="sidebar-heading">
             <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
-                <div class="sidebar-brand-icon"><img src="{{asset('assets/img/logo.png')}}" class="img-fluid" width="60"></div>
-                <div class="sidebar-brand-text"><span>donate</span></div>
+                <div class="sidebar-brand-icon"><img src="{{asset('images/donate.png')}}" class="img-fluid" height="80"></div>
             </a>
         </div>
         <ul class="nav navbar-nav text-light" id="accordionSidebar">

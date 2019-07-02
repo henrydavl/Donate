@@ -1,0 +1,48 @@
+.device-mockup.iphone6_plus.portrait > .device > .screen, .device-mockup.iphone6_plus > .device > .screen {
+  top: 10.6%;
+  bottom: 11.58%;
+  left: 4.5%;
+  right: 6%;
+}
+
+#mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
+  color: #ffffff;
+}
+
+a:focus, a:hover {
+  color: #31af91;
+}
+
+.subs {
+  border-radius: 15px;
+  margin-top: 2em;
+  border-color: #31af91;
+  background-color: #31af91;
+}
+
+.subs.active, .subs:active, .subs:focus, .subs:hover {
+  color: #000000;
+  border-color: #ffffff;
+  background-color: transparent;
+}
+
+.subs-form {
+  border-radius: 15px;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bg-primary {
+  background: #da8541;
+  background: linear-gradient(#fdcc52,#da8541);
+}
+
+section.features .section-heading {
+  margin-bottom: 4em;
+}
+
+#mainNav .navbar-brand {
+  color: #ffffff;
+}
+

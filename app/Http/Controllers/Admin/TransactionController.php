@@ -8,6 +8,7 @@ use App\Utd;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
@@ -19,10 +20,11 @@ class TransactionController extends Controller
     public function index()
     {
         $pages = 'trans';
-        $ongoings = Transaction::all()->whereIn('statetrans', array('1','3','5','7','9'))->sortBy('id');
-        $completes = Transaction::all()->whereIn('statetrans', array('0','2','4','6','8','10','11'))->sortBy('id');
+        $ids = Auth::user()->utd_id;
+        $ongoings = Transaction::all()->whereIn('statetrans', array('1','3','5','7','9'))->where('utd_id', $ids)->sortBy('id');
+        $completes = Transaction::all()->whereIn('statetrans', array('0','2','4','6','8','10','11'))->where('utd_id', $ids)->sortBy('id');
         $user = User::where('role_id', '>', 2)->pluck('name', 'id')->all();
-        $utd = Utd::where('status', '1')->pluck('nama', 'id')->all();
+        $utd = Utd::where('status', '1')->where('id',$ids)->pluck('nama', 'id')->all();
         return view('admin.transaction.index', compact('pages', 'ongoings', 'completes', 'user', 'utd'));
     }
 

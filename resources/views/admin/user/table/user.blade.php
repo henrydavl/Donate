@@ -8,19 +8,19 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr class="text-center">
-                        <th>Photo</th>
-                        <th>Name</th>
+                        <th>Foto</th>
+                        <th>Nama</th>
                         <th>Email</th>
-                        <th>Phone Number</th>
-                        <th>Address</th>
-                        <th>Role</th>
+                        <th>No. Telepon</th>
+                        <th>Alamat</th>
+                        <th>Tipe User</th>
                         <th>Status</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($users as $user)
                         <tr class="text-center">
-                            <td><img class="img-profile rounded-circle" src="{{$user->photoprofile ? asset('images/'.$user->photoprofile) : 'http://placehold.it/400x400'}}" height="45"></td>
+                            <td><img class="img-profile rounded-circle" src="{{$user->photoprofile ? asset('images/'.$user->photoprofile) : asset('images/pro.png')}}" height="45"></td>
                             <td>{{ucwords($user->name)}}</td>
                             <td>{{$user->email}}</td>
                             <td>{{$user->telp}}</td>

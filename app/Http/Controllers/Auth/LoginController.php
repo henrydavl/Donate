@@ -42,15 +42,24 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = [
+        $admin = [
             'email' => $request->email,
             'password' => $request->password,
-            'role_id' => [1,2],
+            'role_id' => 2,
             'isvalid' => '1'
         ];
 
-        if (Auth::attempt($credentials)) {
+        $root = [
+            'email' => $request->email,
+            'password' => $request->password,
+            'role_id' => 1,
+            'isvalid' => '1'
+        ];
+
+        if (Auth::attempt($admin)) {
             return redirect()->route('admin');
+        }elseif (Auth::attempt($root)){
+            return redirect()->route('root');
         }
         return redirect()->route('login');
     }

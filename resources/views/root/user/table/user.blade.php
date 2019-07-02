@@ -23,7 +23,7 @@
                     @foreach($users as $user)
                         <tr class="text-center">
                             <td>{{$user->id}}</td>
-                            <td><img class="img-profile rounded-circle" src="{{$user->photoprofile ? asset('images/'.$user->photoprofile) : 'http://placehold.it/400x400'}}" height="45"></td>
+                            <td><img class="img-profile rounded-circle" src="{{$user->photoprofile ? asset('images/'.$user->photoprofile) : asset('images/pro.png')}}" height="45"></td>
                             <td><a href="{{route('users.edit', $user->id)}}">{{ucwords($user->name)}}</a></td>
                             <td>{{$user->email}}</td>
                             <td>{{$user->telp}}</td>
