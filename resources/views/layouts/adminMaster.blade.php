@@ -13,10 +13,18 @@
 
 <body id="page-top">
     <div id="wrapper">
-        @include('nav.admin_sidebar')
+        @if(\Illuminate\Support\Facades\Auth::user()->role->nama == "Root")
+            @include('nav.root_sidebar')
+        @elseif(\Illuminate\Support\Facades\Auth::user()->role->nama == "Administrator")
+            @include('nav.admin_sidebar')
+        @endif
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
-                @include('nav.admin_top_nav')
+                @if(\Illuminate\Support\Facades\Auth::user()->role->nama == "Root")
+                    @include('nav.root_top_nav')
+                @elseif(\Illuminate\Support\Facades\Auth::user()->role->nama == "Administrator")
+                    @include('nav.admin_top_nav')
+                @endif
                 @yield('content')
             </div>
         </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Root;
 
 use App\City;
 use App\Role;
@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class UserController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,9 +22,12 @@ class UserController extends Controller
      */
     public function index()
     {
+        $ids = Auth::id();
+        $root = User::all()->where('role_id', 1)->where('id', '!=', $ids);
+        $admin = User::all()->where('role_id', 2)->sortBy('id');
         $users = User::all()->whereIn('role_id', [3,4])->sortBy('id');
         $pages = 'ulist';
-        return view('admin.user.index', compact('pages','users'));
+        return view('root.user.index', compact('pages','users', 'root', 'admin'));
     }
 
     /**
@@ -38,7 +41,7 @@ class UserController extends Controller
         $city = City::pluck('nama','id')->all();
         $utd = Utd::pluck('nama','id')->all();
         $roles = Role::pluck('nama','id')->all();
-        return view('admin.user.add', compact('roles','pages','city','utd'));
+        return view('root.user.add', compact('roles','pages','city','utd'));
     }
 
     /**
@@ -52,10 +55,10 @@ class UserController extends Controller
         $this->validator($request->all())->validate();
         $user = $this->new($request->all());
         if (empty($user)) {
-            redirect('/admin/user/')->with('Fail', 'Failed to add user');
+            redirect('/root/users/')->with('Fail', 'Failed to add user');
         }
         event(new Registered($user));
-        return redirect('/admin/user')->with('Success', 'Added New User');
+        return redirect('/root/users')->with('Success', 'Added New User');
     }
 
     protected function validator(array $data)
@@ -73,7 +76,7 @@ class UserController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role_id' => 3,
+            'role_id' => $data['role_id'],
             'kotalahir' => $data['kotalahir'],
             'kotadomisili' => $data['kotadomisili'],
             'alamat' => $data['alamat'],
@@ -107,10 +110,16 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
+        $roles = Role::pluck('nama','id')->all();
+        $city = City::pluck('nama','id')->all();
+        $utd = Utd::pluck('nama','id')->all();
         if (Auth::id() == $id){
             $pages = 'dash';
+            return view('root.profile', compact('user','roles','pages','city','utd'));
+        }else{
+            $pages = 'ulist';
+            return view('root.user.edit', compact('user','roles','pages','city','utd'));
         }
-        return view('admin.profile', compact('user','pages'));
     }
 
     /**
@@ -129,8 +138,13 @@ class UserController extends Controller
             $input = $request->all();
             $input['password'] = Hash::make($request->password);
         }
+
         $user->update($input);
-        return redirect()->route('admin')->with('Success', 'Profile '.$user->name.' updated');
+        if (Auth::id() == $id){
+            return redirect()->route('root')->with('Success', 'Profile '.$user->name.' updated');
+        }else{
+            return redirect()->route('users.index')->with('Success', 'User '.$user->name.' updated');
+        }
     }
 
     /**
@@ -143,7 +157,21 @@ class UserController extends Controller
     {
         $user = User::where('id', $id)->first();
         $user->delete();
-        return redirect('/admin/user')->with('Success', 'User Deleted');
+        return redirect('/root/users')->with('Success', 'User Deleted');
     }
 
+    public function deactivate(Request $request)
+    {
+        $user = User::findOrFail($request->id);
+        $user->update(['isvalid' => '0']);
+        return redirect('/root/users')->with('Success', 'User Deactivated');
+    }
+
+    public function activate(Request $request)
+    {
+        $user = User::findOrFail($request->id);
+//        return $user;
+        $user->update(['isvalid' => '1']);
+        return redirect('/root/users')->with('Success', 'User Activated');
+    }
 }

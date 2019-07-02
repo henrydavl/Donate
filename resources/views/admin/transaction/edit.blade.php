@@ -90,13 +90,13 @@
                             : {{$trans->q4_sick}}
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12 text-right">
-                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#stage1">Edit Tahapan 1</button>
-                            @include('admin.transaction.modal.stage1')
-                        </div>
-                    </div>
+                    {{--<div class="row">--}}
+                        {{--<div class="col-md-12 text-right">--}}
+                            {{--<button type="button" class="btn btn-primary" data-toggle="modal"--}}
+                                    {{--data-target="#stage1">Edit Tahapan 1</button>--}}
+                            {{--@include('admin.transaction.modal.stage1')--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                 </fieldset>
                 <fieldset>
                     <legend>Tahapan 2 (Pemeriksaan Kondisi Tubuh)</legend>

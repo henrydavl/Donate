@@ -1,8 +1,7 @@
 @extends('layouts.adminMaster')
 @section('content')
     <div class="container-fluid">
-        <!-- Content Row -->
         @include('inc.alert')
-        @include('admin.user.table.user')
+        @include('root.mitra.table.mitra')
     </div>
 @endsection

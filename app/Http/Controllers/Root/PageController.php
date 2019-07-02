@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Root;
 
 use App\JadwalMobile;
 use App\JoinMobile;
 use App\Transaction;
-use App\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 
-class PagesController extends Controller
+class PageController extends Controller
 {
     public function __construct()
     {
-            $this->middleware('admin');
+        $this->middleware('root');
     }
 
     public function dashboard(){
@@ -25,6 +24,6 @@ class PagesController extends Controller
         $events = JadwalMobile::all()->where('tipe','a')->where('status',0);
         $joins = JoinMobile::all();
 
-        return view('admin.dashboard', compact('utd','mobile','pages','finish','ongoing', 'events', 'joins'));
+        return view('root.dashboard', compact('utd','mobile','pages','finish','ongoing', 'events', 'joins'));
     }
 }

@@ -25,17 +25,6 @@
                 </div>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="btn btn-link nav-link @if($pages=='utdlist' || $pages=='utdadd') active @endif" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-2" href="#collapse-2" role="button">
-                    <i class="fas fa-hospital-alt"></i>&nbsp;<span>Manage UTD</span>
-                </a>
-                <div class="collapse @if($pages=='utdlist' || $pages=='utdadd') show @endif" id="collapse-2">
-                    <div class="bg-white border rounded py-2 collapse-inner">
-                        <a class="collapse-item @if($pages=='utdlist') active @endif" href="{{ route('utd.index') }}">UTD List</a>
-                        <a class="collapse-item @if($pages=='utdadd') active @endif" href="{{ route('utd.create') }}">Add UTD</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item" role="presentation">
                 <div>
                     <a class="btn btn-link nav-link @if($pages=='mblist' || $pages=='mbadd') active @endif" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-3" href="#collapse-3" role="button">
                         <i class="fas fa-car"></i>&nbsp;<span>Mobile Unit</span>
@@ -47,25 +36,6 @@
                         </div>
                     </div>
                 </div>
-            </li>
-            <li class="nav-item" role="presentation">
-                <div>
-                    <a class="btn btn-link nav-link @if($pages=='mitlist' || $pages=='mitadd') active @endif" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-4" href="#collapse-4" role="button">
-                        <i class="fas fa-handshake"></i>&nbsp;<span>Manage Mitra</span>
-                    </a>
-                    <div class="collapse @if($pages=='mitlist' || $pages=='mitadd') show @endif" id="collapse-4">
-                        <div class="bg-white border rounded py-2 collapse-inner">
-                            <a class="collapse-item @if($pages=='mitlist') active @endif" href="{{ route('mitra.index') }}">Mitra List</a>
-                            <a class="collapse-item @if($pages=='mitadd') active @endif" href="{{ route('mitra.create') }}">Add Mitra</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link @if($pages=='vcr') active @endif" href="{{ route('voucher.index') }}"><i class="fas fa-ticket-alt"></i><span>&nbsp;Manage Voucher</span></a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link @if($pages=='cast') active @endif" href="{{ route('broadcast.index') }}"><i class="fas fa-bullhorn"></i><span>&nbsp;Broadcast Message</span></a>
             </li>
             <hr class="sidebar-divider">
         </ul>

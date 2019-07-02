@@ -11,6 +11,7 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,10 +29,6 @@ Auth::routes();
 
 Route::group(['middleware'=>['admin']], function (){
     Route::get('/admin/dashboard', 'Admin\PagesController@dashboard')->name('admin');
-    Route::get('admin/user/deactivate', 'Admin\UserController@deactivate')->name('user.deactivate');
-    Route::post('admin/user/deactivate', 'Admin\UserController@deactivate');
-    Route::get('admin/user/activate', 'Admin\UserController@activate')->name('user.activate');
-    Route::post('admin/user/activate', 'Admin\UserController@activate');
 
     Route::get('admin/dashboard/join', 'Admin\EventController@join')->name('event.join');
     Route::post('admin/dashboard/join', 'Admin\EventController@join');
@@ -39,15 +36,25 @@ Route::group(['middleware'=>['admin']], function (){
     Route::post('admin/dashboard/reject', 'Admin\EventController@reject');
 
     Route::resource('/admin/user', 'Admin\UserController');
-    Route::resource('/admin/mitra', 'Admin\MitraController');
     Route::resource('/admin/transaction', 'Admin\TransactionController');
-    Route::resource('/admin/utd', 'Admin\UTDController');
     Route::resource('/admin/mobileunit', 'Admin\EventController');
-    Route::resource('/admin/voucher', 'Admin\VoucherController');
-    Route::resource('/admin/broadcast', 'Admin\BroadcastController');
+
 });
 
 Route::group(['middleware'=>['root']], function (){
+    Route::get('/root/dashboard', 'Root\PageController@dashboard')->name('root');
+    Route::get('root/user/deactivate', 'Root\UsersController@deactivate')->name('user.deactivate');
+    Route::post('root/user/deactivate', 'Root\UsersController@deactivate');
+    Route::get('root/user/activate', 'Root\UsersController@activate')->name('user.activate');
+    Route::post('root/user/activate', 'Root\UsersController@activate');
+
+    Route::resource('/root/users', 'Root\UsersController');
+    Route::resource('/root/mitra', 'Root\MitraController');
+    Route::resource('/root/voucher', 'Root\VoucherController');
+    Route::resource('/root/broadcast', 'Root\BroadcastController');
+    Route::resource('/root/utd', 'Root\UTDController');
+    Route::resource('/root/transactions', 'Root\TransactionsController');
+    Route::resource('/root/mobileunits', 'Root\EventsController');
 
 });
 
