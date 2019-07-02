@@ -9,7 +9,7 @@ class Transaction extends Model
     protected $fillable = [
         'user_id','utd_id','tipe','join_mobile_id','statetrans','timeQuiz','timeScan','timeTransEnd','ket','ketTolak', 'ketBatal','pawal','tinggiUser',
         'beratUser','suhuUser','ptekanan','tekananA_user','tekananB_user','denyutNadi_user','ccDarah','kantongDarah','phbTrans', 'nhbTrans','nhctTrans','macDonTrans',
-        'metDonTrans','hbmcsa','hbmcsb','padtapTrans','pengambilanTrans','ccstopTrans','reaksiDonTrans','ketReaksiDonor','noKantongDarah',
+        'metDonTrans','hbmcsa','hbmcsb','paftapTrans','pengambilanTrans','ccstopTrans','reaksiDonTrans','ketReaksiDonor','noKantongDarah',
         'q1_jamtidur','q2_obat','q3_mens','q4_sick','darah_isused',
     ];
 
