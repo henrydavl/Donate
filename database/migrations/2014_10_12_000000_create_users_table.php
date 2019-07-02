@@ -33,6 +33,7 @@ class CreateUsersTable extends Migration
             $table->enum('goldarah', ['A','B','AB','O'])->nullable();
             $table->enum('rhesus', ['+','-'])->nullable();
             $table->bigInteger('ndonor')->nullable();
+            $table->timestamp('lastdonor')->nullable();
             $table->enum('isvalid', ['0','1'])->default('1');
             $table->enum('islogin', ['0','1'])->default('0');
             $table->enum('status',['0','1'])->default('0');

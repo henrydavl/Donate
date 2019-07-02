@@ -26,14 +26,15 @@ class CreateTransactionsTable extends Migration
             $table->text('ket')->nullable();
             $table->text('ketTolak')->nullable();
             $table->text('ketBatal')->nullable();
-            $table->bigInteger('pAwal')->nullable();
+            $table->bigInteger('pawal')->nullable();
             $table->double('tinggiUser')->nullable();
             $table->double('beratUser')->nullable();
             $table->double('suhuUser')->nullable();
+            $table->bigInteger('ptekanan')->nullable();
             $table->double('tekananA_user')->nullable();
             $table->double('tekananB_user')->nullable();
             $table->integer('denyutNadi_user')->nullable();
-            $table->enum('ccDarah',['1','2','3','4'])->nullable();
+            $table->enum('ccDarah',['250','350','450'])->nullable();
             $table->enum('kantongDarah',['s','d','t','q'])->nullable();
             $table->bigInteger('phbTrans')->nullable();
             $table->integer('nhbTrans')->nullable();
@@ -47,11 +48,12 @@ class CreateTransactionsTable extends Migration
             $table->integer('ccstopTrans')->nullable();
             $table->enum('reaksiDonTrans',['h','p','m','l'])->nullable();
             $table->text('ketReaksiDonor')->nullable();
-            $table->bigInteger('noKantongDarah')->nullable();
+            $table->text('noKantongDarah')->nullable();
             $table->integer('q1_jamtidur');
             $table->enum('q2_obat',['0','1']);
             $table->enum('q3_mens',['0','1']);
             $table->text('q4_sick');
+            $table->enum('darah_isused',['0','1'])->default('0');
             $table->timestamps();
         });
     }
