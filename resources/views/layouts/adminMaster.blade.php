@@ -49,6 +49,58 @@
                 })
             }).change();
         });
+        $(function(){
+            $("select#ambil").change(function(){
+                $(this).find("option:selected").each(function(){
+                    if ($(this).attr("value") === "s") {
+                        $("#stop").show();
+                        document.getElementById("stopcc").required = true;
+                    } else {
+                        $("#stop").hide();
+                        document.getElementById("stopcc").required = false;
+                    }
+                })
+            }).change();
+        });
+        $(function(){
+            $("select#reakdon").change(function(){
+                $(this).find("option:selected").each(function(){
+                    if ($(this).attr("value") === "l") {
+                        $("#reak").show();
+                        document.getElementById("reaklan").required = true;
+                    } else {
+                        $("#reak").hide();
+                        document.getElementById("reaklan").required = false;
+                    }
+                })
+            }).change();
+        });
+        $(function(){
+            $("select#ambilc").change(function(){
+                $(this).find("option:selected").each(function(){
+                    if ($(this).attr("value") === "s") {
+                        $("#stopc").show();
+                        document.getElementById("stopccc").required = true;
+                    } else {
+                        $("#stopc").hide();
+                        document.getElementById("stopccc").required = false;
+                    }
+                })
+            }).change();
+        });
+        $(function(){
+            $("select#reakdonc").change(function(){
+                $(this).find("option:selected").each(function(){
+                    if ($(this).attr("value") === "l") {
+                        $("#reakc").show();
+                        document.getElementById("reaklanc").required = true;
+                    } else {
+                        $("#reakc").hide();
+                        document.getElementById("reaklanc").required = false;
+                    }
+                })
+            }).change();
+        });
     </script>
 </body>
 

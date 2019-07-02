@@ -58,7 +58,7 @@ class TransactionController extends Controller
         }
 
         $transa = Transaction::where('user_id', $input['user_id'])->where('statetrans', '11')->first();
-        if ($transa){
+        if ($transa != null){
             $last = Carbon::parse($transa->timeTransEnd)->timestamp;
             $now = Carbon::now()->timestamp;
             if ($now - $last >= 5184000000){
@@ -68,6 +68,8 @@ class TransactionController extends Controller
                 $user = User::find($request->user_id);
                 return redirect()->route('transaction.index')->with('Fail', 'Maaf user '.$user->name.' belum dapat melakukan donor darah (belum 2 bulan)');
             }
+        }else{
+            $input['statetrans'] = '3';
         }
 
         $trans = Transaction::create($input);
@@ -112,7 +114,11 @@ class TransactionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $trans = Transaction::find($id);
+        $input = $request->all();
+        
+
+        return redirect()->route('transaction.edit',$id);
     }
 
     /**

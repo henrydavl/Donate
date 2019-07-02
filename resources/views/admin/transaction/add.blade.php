@@ -45,7 +45,7 @@
                     {!! Form::text('q4_sick', null, ['class'=>'form-control', 'required', 'placeholder' => 'Sebutkan Penyakit'])!!}
                 </div>
                 <div class="form-group">
-                    {!! Form::submit('Make Transaction', ['class'=>'btn btn-primary']) !!}
+                    {!! Form::submit('Buat Transaksi', ['class'=>'btn btn-primary']) !!}
                 </div>
                 {!! Form::close() !!}
             </div>

@@ -92,7 +92,9 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            <a href="" class="btn btn-primary">Edit Tahapan 1</a>
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#stage1">Edit Tahapan 1</button>
+                            @include('admin.transaction.modal.stage1')
                         </div>
                     </div>
                 </fieldset>
@@ -124,7 +126,9 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            <a href="" class="btn btn-primary @if($trans->statetrans != 3) disabled @endif">Edit Tahapan 2</a>
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#stage2" @if($trans->statetrans < 3) disabled @endif>Edit Tahapan 2</button>
+                            @include('admin.transaction.modal.stage2')
                         </div>
                     </div>
                 </fieldset>
@@ -148,7 +152,9 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            <a href="" class="btn btn-primary @if($trans->statetrans != 5) disabled @endif">Edit Tahapan 3</a>
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#stage3" @if($trans->statetrans < 5) disabled @endif>Edit Tahapan 3</button>
+                            @include('admin.transaction.modal.stage3')
                         </div>
                     </div>
                 </fieldset>
@@ -183,7 +189,7 @@
                             <h6>Metode Pengambilan Darah</h6>
                         </div>
                         <div class="col-md-9">
-                            : @if($trans->macDonTrans == 'b') Biasa @elseif($trans->macDonTrans == 'a') Aferesis @elseif($trans->macDonTrans == 'au') Autologus @endif
+                            : @if($trans->metDonTrans == 'b') Biasa @elseif($trans->metDonTrans == 'a') Aferesis @elseif($trans->metDonTrans == 'au') Autologus @endif
                         </div>
                     </div>
                     <div class="row">
@@ -213,7 +219,9 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            <a href="" class="btn btn-primary @if($trans->statetrans != 7) disabled @endif">Edit Tahapan 4</a>
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#stage4"  @if($trans->statetrans < 7) disabled @endif>Edit Tahapan 4</button>
+                            @include('admin.transaction.modal.stage4')
                         </div>
                     </div>
                 </fieldset>
@@ -224,7 +232,7 @@
                             Ditolak / Diambil Sebanyak
                         </div>
                         <div class="col-md-9">
-                            : 350cc
+                            : {{$trans->ccDarah }} cc
                         </div>
                     </div>
                     <div class="row">
@@ -263,8 +271,12 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            <a href="" class="btn btn-success @if($trans->statetrans != 9) disabled @endif">Transaksi Selesai</a>
-                            <a href="" class="btn btn-danger">Batalkan Transaksi</a>
+                            <button type="button" class="btn btn-success" data-toggle="modal"
+                                    data-target="#done" @if($trans->statetrans < 9) disabled @endif>Transaksi Selesai</button>
+                            @include('admin.transaction.modal.done')
+                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                    data-target="#cancel">Batalkan Transaksi</button>
+                            @include('admin.transaction.modal.cancel')
                         </div>
                     </div>
                 </fieldset>
