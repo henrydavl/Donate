@@ -81,6 +81,8 @@ class TransactionController extends Controller
             $input['statetrans'] = '3';
         }
 
+        $input['timeQuiz'] = Carbon::now();
+        $input['timeScan'] = Carbon::now();
         $trans = Transaction::create($input);
 
         return redirect()->route('transaction.index')->with('Success', 'Berhasil menambahkan transaksi baru')->with('link', $trans->id);

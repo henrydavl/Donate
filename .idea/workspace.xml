@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12732859-cc71-45c0-8eb9-3ab396298cab" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/TransactionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/TransactionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/transaction/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/transaction/detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/transaction/table/completed.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/transaction/table/completed.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/transaction/table/ongoing.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/transaction/table/ongoing.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,26 +23,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/TransactionController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-49">
-              <caret line="167" column="8" selection-start-line="167" selection-start-column="8" selection-end-line="167" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/transaction/detail.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="32" column="54" lean-forward="true" selection-start-line="32" selection-start-column="54" selection-end-line="32" selection-end-column="54" />
+            <state relative-caret-position="400">
+              <caret line="84" column="43" lean-forward="true" selection-start-line="83" selection-start-column="8" selection-end-line="84" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/transaction/table/ongoing.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="86" column="11" lean-forward="true" selection-start-line="86" selection-start-column="11" selection-end-line="86" selection-end-column="11" />
+            <state relative-caret-position="411">
+              <caret line="54" column="52" selection-start-line="54" selection-start-column="44" selection-end-line="54" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/transaction/table/completed.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="139">
+              <caret line="51" column="52" selection-start-line="51" selection-start-column="52" selection-end-line="51" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -105,8 +103,6 @@
         <option value="$PROJECT_DIR$/resources/views/admin/transaction/modal/stage2.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/transaction/modal/stage3.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/transaction/modal/stage4.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/transaction/table/ongoing.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/transaction/table/completed.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/pdf/generatepdf.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/transaction/edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/transaction/modal/done.blade.php" />
@@ -119,9 +115,11 @@
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Transaction.php" />
         <option value="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/TransactionController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/transaction/detail.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/TransactionController.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/transaction/table/ongoing.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/transaction/table/completed.blade.php" />
       </list>
     </option>
   </component>
@@ -311,6 +309,15 @@
               <item name="transaction" type="462c0819:PsiDirectoryNode" />
               <item name="modal" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Donate" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Donate" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="transaction" type="462c0819:PsiDirectoryNode" />
+              <item name="table" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -383,12 +390,12 @@
       <workItem from="1562045624962" duration="22297000" />
       <workItem from="1562072583000" duration="8559000" />
       <workItem from="1562084018365" duration="11451000" />
-      <workItem from="1562128262085" duration="3619000" />
+      <workItem from="1562128262085" duration="5171000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="149929000" />
+    <option name="totallyTimeSpent" value="151481000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -623,13 +630,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/transaction/table/completed.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="58" column="147" selection-start-line="58" selection-start-column="147" selection-end-line="58" selection-end-column="147" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/transaction/modal/stage4.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-144">
@@ -752,13 +752,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/transaction/table/ongoing.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="59" column="42" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_25_175504_create_transactions_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="780">
@@ -828,10 +821,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/TransactionController.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-49">
-          <caret line="167" column="8" selection-start-line="167" selection-start-column="8" selection-end-line="167" selection-end-column="45" />
+        <state relative-caret-position="160">
+          <caret line="32" column="40" lean-forward="true" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -842,10 +835,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/transaction/table/completed.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="51" column="52" selection-start-line="51" selection-start-column="52" selection-end-line="51" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/TransactionController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
-          <caret line="86" column="11" lean-forward="true" selection-start-line="86" selection-start-column="11" selection-end-line="86" selection-end-column="11" />
+          <caret line="84" column="43" lean-forward="true" selection-start-line="83" selection-start-column="8" selection-end-line="84" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/transaction/table/ongoing.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="54" column="52" selection-start-line="54" selection-start-column="44" selection-end-line="54" selection-end-column="52" />
         </state>
       </provider>
     </entry>

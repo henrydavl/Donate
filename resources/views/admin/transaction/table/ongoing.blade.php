@@ -52,7 +52,7 @@
                                 @endswitch
                             </td>
                             <td>{{$ongoing->timeQuiz ? $ongoing->timeQuiz : '-'}}</td>
-                            <td>{{$ongoing->timeStart ? $ongoing->timeStart : '-'}}</td>
+                            <td>{{$ongoing->timeScan ? $ongoing->timeScan : '-'}}</td>
                             <td>@if($ongoing->statetrans == 10 || $ongoing->statetrans == 11){{\Carbon\Carbon::parse($ongoing->timeTransEnd)->format('d F Y h:i:s')}}@else <p class="text-success">Diproses</p> @endif</td>
                             <td width="150px"><div class="row no-gutters">
                                     <div class="col-md-12">

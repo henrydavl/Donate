@@ -49,7 +49,7 @@
                                 @endswitch
                             </td>
                             <td>{{$ongoing->timeQuiz ? $ongoing->timeQuiz : '-'}}</td>
-                            <td>{{$ongoing->timeStart ? $ongoing->timeStart : '-'}}</td>
+                            <td>{{$ongoing->timeScan ? $ongoing->timeScan : '-'}}</td>
                             <td>{{$ongoing->timeTransEnd ? $ongoing->timeTransEnd : '-'}}</td>
                             <td width="150px"><div class="row no-gutters">
                                     <div class="col-md-6">
