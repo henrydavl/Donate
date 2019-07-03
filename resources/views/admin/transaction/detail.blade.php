@@ -30,7 +30,7 @@
                             <h6>Donor ke</h6>
                         </div>
                         <div class="col-md-9">
-                            : {{$trans->user->ndonor != 0? $trans->user->ndonor + 1 : 1}}
+                            : {{$trans->user->ndonor}}
                         </div>
                     </div>
                     <div class="row">

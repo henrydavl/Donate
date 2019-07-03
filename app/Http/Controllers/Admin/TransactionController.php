@@ -165,6 +165,7 @@ class TransactionController extends Controller
     public function update(Request $request, $id)
     {
         $trans = Transaction::find($id);
+        $user = User::find($trans->user->id);
         $input = $request->all();
         if ($trans->statetrans == 3){
             if (!empty($request->ketBatal)){
@@ -221,6 +222,11 @@ class TransactionController extends Controller
                 $input['paftapTrans'] = Auth::id();
                 $input['noKantongDarah'] = $trans->utd_id.$request->noKantong;
                 $trans->update($input);
+                $user->update([
+                    'dopoint' => $user->dopoint + 12,
+                    'ndonor' => $user->ndonor + 1,
+                    'lastdonor' => Carbon::now()
+                ]);
                 return redirect()->route('transaction.index')->with('Success', 'Transaksi Selesai');
             }
         }
