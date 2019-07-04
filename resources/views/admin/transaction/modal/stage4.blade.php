@@ -19,10 +19,10 @@
                         {!! Form::number('nhbTrans', null, ['class'=>'form-control', 'required', 'min' => '12.75', 'max' => '17', 'step' => '0.01'])!!}
                     @endif
                 </div>
-                <div class="form-group">
-                    {!! Form::label('q6', 'Nilai Hct') !!}
-                    {!! Form::number('nhctTrans', null, ['class'=>'form-control', 'required', 'min' => '0'])!!}
-                </div>
+                {{--<div class="form-group">--}}
+                    {{--{!! Form::label('q6', 'Nilai Hct') !!}--}}
+                    {{--{!! Form::number('nhctTrans', null, ['class'=>'form-control', 'required', 'min' => '0'])!!}--}}
+                {{--</div>--}}
                 <div class="form-group">
                     {!! Form::label('q5', 'Macam Donor') !!}
                     {!! Form::select('macDonTrans',['' => 'Pilih Macam Donor', 's' => 'Sukarela' ,'p'=> 'Pengganti'], null, ['class'=>'custom-select', 'required'])!!}
