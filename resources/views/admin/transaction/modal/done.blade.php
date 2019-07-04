@@ -36,7 +36,7 @@
                     {!! Form::text('ketReaksiDonor', null, ['id'=>'reaklan' ,'class'=>'form-control'])!!}
                 </div>
                 <div class="form-group">
-                    {!! Form::label('q10', 'N0. Kantong Darah') !!}
+                    {!! Form::label('q10', 'No. Kantong Darah') !!}
                     {!! Form::number('noKantong', null, ['class'=>'form-control', 'required', 'min' => '1'])!!}
                 </div>
                 <div class="form-group">

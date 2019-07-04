@@ -46,7 +46,7 @@
                             <h6>Jenis Kelamin</h6>
                         </div>
                         <div class="col-md-9">
-                            : {{$trans->user->gender = 'p' ? 'Laki - laki' : 'Perempuan'}}
+                            : {{$trans->user->gender == 'l' ? 'Laki - laki' : 'Perempuan'}}
                         </div>
                     </div>
                     <div class="row">
