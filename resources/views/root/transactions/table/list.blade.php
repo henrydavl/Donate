@@ -1,6 +1,6 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h1 class="h4 mb-0 font-weight-bold text-primary" style="margin-top: 0.2em;">Transaksi Selesai</h1>
+        <h1 class="h4 mb-0 font-weight-bold text-primary" style="margin-top: 0.2em;">Transaction List</h1>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -8,20 +8,20 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr class="text-center">
-                        {{--<th>Id</th>--}}
-                        <th>Nama Pasien</th>
-                        <th>Nama UDD</th>
-                        <th>Tahapan</th>
-                        <th>Waktu Quiz</th>
-                        <th>Waktu Scan</th>
-                        <th>Waktu Selesai</th>
+                        <th>Id</th>
+                        <th>Patient Name</th>
+                        <th>UTD</th>
+                        <th>Phase</th>
+                        <th>Quiz Time</th>
+                        <th>Scan Time</th>
+                        <th>End Time</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($completes as $ongoing)
                         <tr class="text-center">
-                            {{--<td>{{$ongoing->id}}</td>--}}
+                            <td>{{$ongoing->id}}</td>
                             <td>{{$ongoing->user->name}}</td>
                             <td>{{$ongoing->utd->nama}}</td>
                             <td>@switch($ongoing->statetrans)

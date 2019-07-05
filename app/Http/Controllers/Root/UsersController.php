@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Root;
 
 use App\City;
+use App\Events\WelcomeEmailEvent;
 use App\Role;
 use App\User;
 use App\Utd;
@@ -58,6 +59,7 @@ class UsersController extends Controller
             redirect('/root/users/')->with('Fail', 'Failed to add user');
         }
         event(new Registered($user));
+        event(new WelcomeEmailEvent($request->email));
         return redirect('/root/users')->with('Success', 'Added New User');
     }
 

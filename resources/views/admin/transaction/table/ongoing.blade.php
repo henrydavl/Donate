@@ -19,7 +19,7 @@
                     <tr class="text-center">
                         {{--<th>Id</th>--}}
                         <th>Nama Pasien</th>
-                        <th>Nama UTD</th>
+                        <th>Nama UDD</th>
                         <th>Tahapan</th>
                         <th>Waktu Quiz</th>
                         <th>Waktu Scan</th>

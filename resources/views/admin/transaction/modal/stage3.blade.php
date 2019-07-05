@@ -15,10 +15,10 @@
                     {!! Form::label('q1', 'Tekanan Darah (sistole/diastole)') !!}
                     <div class="form-row">
                         <div class="col-md-6">
-                            {!! Form::number('tekananA_user', null, ['class'=>'form-control', 'required', 'min' => '110', 'max' => '160', 'step'=>'0.01'])!!}
+                            {!! Form::number('tekananA_user', null, ['class'=>'form-control', 'required', 'min' => '110', 'max' => '140', 'step'=>'0.01'])!!}
                         </div>
                         <div class="col-md-6">
-                            {!! Form::number('tekananB_user', null, ['class'=>'form-control', 'required', 'min' => '70', 'max' => '100', 'step'=>'0.01'])!!}
+                            {!! Form::number('tekananB_user', null, ['class'=>'form-control', 'required', 'min' => '60', 'max' => '90', 'step'=>'0.01'])!!}
                         </div>
                     </div>
                 </div>

@@ -17,10 +17,10 @@
                 </div>
                 <div class="form-group">
                     {!! Form::label('tipe', 'Lokasi Donor') !!}
-                    {!! Form::select('tipe', ['' => 'Pilih Lokasi', 'i' => 'UTD', 'm' => 'Mobile Unit'], null, ['id' => 'tipe', 'class'=>'custom-select', 'required'])!!}
+                    {!! Form::select('tipe', ['' => 'Pilih Lokasi', 'i' => 'UDD', 'm' => 'Mobile Unit'], null, ['id' => 'tipe', 'class'=>'custom-select', 'required'])!!}
                 </div>
                 <div class="form-group" id="utd">
-                    {!! Form::label('utd', 'Pilih UTD') !!}
+                    {!! Form::label('utd', 'Pilih UDD') !!}
                     {!! Form::select('utd_id', $utd, null, ['id' => 'utdid', 'class'=>'custom-select', 'required'])!!}
                 </div>
                 <div class="form-group" id="mob">

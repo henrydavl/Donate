@@ -16,7 +16,7 @@
                     @if($trans->user->gender == 'p')
                         {!! Form::number('nhbTrans', null, ['class'=>'form-control', 'required', 'min' => '12.5', 'max' => '17', 'step' => '0.01'])!!}
                     @else
-                        {!! Form::number('nhbTrans', null, ['class'=>'form-control', 'required', 'min' => '12.75', 'max' => '17', 'step' => '0.01'])!!}
+                        {!! Form::number('nhbTrans', null, ['class'=>'form-control', 'required', 'min' => '12.5', 'max' => '17', 'step' => '0.01'])!!}
                     @endif
                 </div>
                 {{--<div class="form-group">--}}
