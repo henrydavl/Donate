@@ -154,6 +154,10 @@
             <span>Petugas</span>
             <span style="margin-left: 188px">: {{$paf}}</span>
         </div>
+        <div style="margin-left: 2.2em">
+            <span>Keterangan Pasca Donor</span>
+            <span style="margin-left: 67px">: {{$ket}}</span>
+        </div>
     </div>
     <div style="width: 98%; margin-bottom: 2em">
         <h3 style="margin-left: 1em; padding: 0.5em; background-color: #eee; color: #555">Tanda Tangan</h3>

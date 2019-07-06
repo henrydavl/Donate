@@ -307,6 +307,7 @@ class TransactionController extends Controller
             'reakdon' => $reakdon,
             'nokantong' => $transac->noKantongDarah,
             'paf' => $paf,
+            'ket' => $transac->ket,
         ];
         $pdf = PDF::loadView('generatepdf', $trans);
         $title = 'Donor-'.$transac->utd->nama.'|No.'.$transac->id.'|Tanggal:'.$transac->timeTransEnd.'.pdf';
