@@ -342,6 +342,7 @@
                             <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#pasca">Keterangan Pasca Donor</button>
                             @include('admin.transaction.modal.pasca')
+                            <a href="{{route('pdf', $trans->id)}}" class="btn btn-outline-info">Download Detail (PDF)</a>
                         </div>
                     </div>
                     @endif
