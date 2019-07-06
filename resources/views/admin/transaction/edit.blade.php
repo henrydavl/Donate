@@ -129,7 +129,7 @@
                             <h6>Berat Badan</h6>
                         </div>
                         <div class="col-md-9">
-                            : {{$trans->beratUser}} cm
+                            : {{$trans->beratUser}} Kg
                         </div>
                     </div>
                     <div class="row">
@@ -137,7 +137,7 @@
                             <h6>Tinggi Badan</h6>
                         </div>
                         <div class="col-md-9">
-                            : {{$trans->tinggiUser}} Kg
+                            : {{$trans->tinggiUser}} cm
                         </div>
                     </div>
                     <div class="row">

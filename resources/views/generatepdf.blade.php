@@ -5,175 +5,166 @@
 </head>
 <body style="font-family:Arial, sans-serif;">
 <div style="border : 2px solid #70c8d2; border-radius: 20px; width: 700px; margin-left: auto; margin-right: auto;">
-    <table style="margin-top: 2em; margin-bottom: 2em;">
-        <tr>
-            <td width="500" style="text-align: left; padding-left: 1em">
-                <img height="100" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7f98014e-7a83-4138-a97a-bbc112df6319/ddaqw5w-67f71858-39c5-4db0-b816-7775609e3e97.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzdmOTgwMTRlLTdhODMtNDEzOC1hOTdhLWJiYzExMmRmNjMxOVwvZGRhcXc1dy02N2Y3MTg1OC0zOWM1LTRkYjAtYjgxNi03Nzc1NjA5ZTNlOTcucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.RPixxDJsnDpCir4TwQVunL6BmdscHYpRWOFVFYlwAm4">
-            </td>
-            <td width="500" style="text-align: right; padding-right: 2em">
-                <h2>UDD Name</h2>
-                <p>Alamat</p>
-                <p>Transaksi</p>
-            </td>
-        </tr>
-    </table>
+    <div style="text-align: center;">
+        <img height="100" style="margin-top: 10px;" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7f98014e-7a83-4138-a97a-bbc112df6319/ddaqw5w-67f71858-39c5-4db0-b816-7775609e3e97.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzdmOTgwMTRlLTdhODMtNDEzOC1hOTdhLWJiYzExMmRmNjMxOVwvZGRhcXc1dy02N2Y3MTg1OC0zOWM1LTRkYjAtYjgxNi03Nzc1NjA5ZTNlOTcucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.RPixxDJsnDpCir4TwQVunL6BmdscHYpRWOFVFYlwAm4">
+    </div>
+    <div style="text-align: center;">
+        <h2 style="margin: 0;">{{$udname}}</h2>
+        <p style="margin: 0; ">{{$udadd}}</p>
+        <p style="margin: 0; ">{{$transno}}</p>
+    </div>
     <div style="width: 98%;">
         <h3 style="margin-left: 1em; padding: 0.5em; background-color: #eee; color: #555">Detail Pendornor</h3>
-        <table style="margin-left: 2em;">
-            <tr>
-                <td style="width: 15em">Nama</td>
-                <td style="width: 20em">: $trans['name']</td>
-            </tr>
-            <tr>
-                <td style="width: 15em">Terakhir Donor</td>
-                <td style="width: 20em">: $trans['timeTransEnd']</td>
-            </tr>
-            <tr>
-                <td style="width: 15em">Donor ke</td>
-                <td style="width: 20em">: $trans['ndonor']</td>
-            </tr>
-            <tr>
-                <td style="width: 15em">Golongan Darah (rhesus)</td>
-                <td style="width: 20em">: $trans['goldarah'] ($trans['rhesus'])</td>
-            </tr>
-            <tr>
-                <td style="width: 15em">Jenis Kelamin</td>
-                <td style="width: 20em">: $trans['gender']</td>
-            </tr>
-            <tr>
-                <td style="width: 15em">State saat ini</td>
-                <td style="width: 20em">: $trans['ketstate']</td>
-            </tr>
-            <tr>
-                <td style="width: 15em">Keterangan Pembatalan</td>
-                <td style="width: 20em">: $trans['ketBatal']</td>
-            </tr>
-        </table>
+        <div style="margin-left: 2.2em">
+            <span>Nama</span>
+            <span style="margin-left: 200px">: {{$name}}</span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>Terakhir Donor</span>
+            <span style="margin-left: 138px">: {{$timeTransEnd}}</span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>Donor ke</span>
+            <span style="margin-left: 178px">: {{$ndonor}}</span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>Golongan Darah (rhesus)</span>
+            <span style="margin-left: 63px">: {{$goldarah.'('.$rhesus.')'}} </span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>Jenis Kelamin</span>
+            <span style="margin-left: 144px">: {{$gender}}</span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>State saat ini</span>
+            <span style="margin-left: 151px">: {{$ketstate}}</span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>Keterangan Pembatalan</span>
+            <span style="margin-left: 71px">: {{$ketBatal}}</span>
+        </div>
     </div>
     <div style="width: 98%;">
         <h3 style="margin-left: 1em; padding: 0.5em; background-color: #eee; color: #555">Tahapan 1 (Pengisian Kuisioner & Pengecekan Terakhir Donor)</h3>
-        <table style="margin-left: 2em;">
-            <tr>
-                <td style="width: 15em">Pertanyaan 1 (Lama Tidur)</td>
-                <td style="width: 20em">: $trans['q1_jamtidur']</td>
-            </tr>
-            <tr>
-                <td style="width: 15em">Pertanyaan 2 (Minum obat dalam 3 hari)</td>
-                <td style="width: 20em">: $trans['q2_obat']</td>
-            </tr>
-            <tr>
-                <td style="width: 15em">Pertanyaan 3 (Sedang Mensturasi, Hamil, Menyusui)</td>
-                <td style="width: 20em">: $trans['q3_mens']</td>
-            </tr>
-            <tr>
-                <td style="width: 15em">Pertanyaan 4 (Sakit Serius)</td>
-                <td style="width: 20em">: $trans['q4_sick']</td>
-            </tr>
-        </table>
+        <div style="margin-left: 2.2em">
+            <span>Pertanyaan 1 (Lama Tidur)</span>
+            <span style="margin-left: 52px">: {{$q1_jamtidur}}</span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>Pertanyaan 2 (Minum obat dalam <br> 3 hari)</span>
+            <span style="margin-left: 198px">: {{$q2_obat}}</span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>Pertanyaan 3 (Sedang <br>Mensturasi, Hamil, Menyusui)</span>
+            <span style="margin-left: 33px">: {{$q3_mens}}</span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>Pertanyaan 4 (Sakit Serius)</span>
+            <span style="margin-left: 48px">: {{$q4_sick}}</span>
+        </div>
     </div>
     <div style="width: 98%;">
         <h3 style="margin-left: 1em; padding: 0.5em; background-color: #eee; color: #555">Tahapan 2 (Pemeriksaan Kondisi Tubuh)</h3>
-        <table style="margin-left: 2em;">
-            <tr>
-                <td style="width: 15em">Berat Badan</td>
-                <td style="width: 20em">: $trans['beratUser'] cm</td>
-            </tr>
-            <tr>
-                <td style="width: 15em">Tinggi Badan</td>
-                <td style="width: 20em">: $trans['tinggiUser'] Kg</td>
-            </tr>
-            <tr>
-                <td style="width: 15em">Suhu Badan</td>
-                <td style="width: 20em">: $trans['suhuUser'] °C</td>
-            </tr>
-            <tr>
-                <td style="width: 15em">Petugas</td>
-                <td style="width: 20em">: $trans['pawal']</td>
-            </tr>
-        </table>
+        <div style="margin-left: 2.2em">
+            <span>Berat Badan</span>
+            <span style="margin-left: 156px">: {{$beratUser}}</span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>Tinggi Badan</span>
+            <span style="margin-left: 151px">: {{$tinggiUser}}</span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>Suhu Badan</span>
+            <span style="margin-left: 157px">: {{$suhuUser}}</span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>Petugas</span>
+            <span style="margin-left: 187px">: {{$pawal}}</span>
+        </div>
     </div>
     <div style="width: 98%;">
         <h3 style="margin-left: 1em; padding: 0.5em; background-color: #eee; color: #555">Tahapan 3 (Pengecekan Tensi & Denyut Nadi)</h3>
-        <table style="margin-left: 2em;">
-            <tr>
-                <td style="width: 15em">Tekanan Darah (sistole/diastole)</td>
-                <td style="width: 20em">: $trans['tekananA_user'] mmHg / $trans['tekananB_user'] mmHg</td>
-            </tr>
-            <tr>
-                <td style="width: 15em">Denyut Nadi</td>
-                <td style="width: 20em">: $trans['denyutNadi_user']</td>
-            </tr>
-            <tr>
-                <td style="width: 15em">Petugas</td>
-                <td style="width: 20em">: $trans['petekan']</td>
-            </tr>
-        </table>
+        <div style="margin-left: 2.2em">
+            <span>Tekanan Darah (sistole/diastole)</span>
+            <span style="margin-left: 17px">: {{$tekananA_user}} mmHg / {{$tekananB_user}} mmHg</span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>Denyut Nadi</span>
+            <span style="margin-left: 157px">: {{$denyutNadi_user}}</span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>Petugas</span>
+            <span style="margin-left: 187px">: {{$petekan}}</span>
+        </div>
     </div>
     <div style="width: 98%;">
         <h3 style="margin-left: 1em; padding: 0.5em; background-color: #eee; color: #555">Tahapan 4 (Pengecekan HB)</h3>
-        <table style="margin-left: 2em;">
-            <tr>
-                <td style="width: 15em">Nilai Hb</td>
-                <td style="width: 20em">: $trans['nhbTrans']</td>
-            </tr>
-            <tr>
-                <td style="width: 15em">Nilai Hct</td>
-                <td style="width: 20em">: $trans['nhcTrans']</td>
-            </tr>
-            <tr>
-                <td style="width: 15em">Macam Donor</td>
-                <td style="width: 20em">: $trans['mac']</td>
-            </tr>
-            <tr>
-                <td style="width: 15em">Metode Pengambilan Darah</td>
-                <td style="width: 20em">: $trans['met']</td>
-            </tr>
-            <tr>
-                <td style="width: 15em">Hb Metode Cupri Sulfat</td>
-                <td style="width: 20em">:</td>
-            </tr>
-            <tr>
-                <td style="width: 10em">Berat Jenis 1.053</td>
-                <td>$trans['hbmcsa']</td>
-            </tr>
-            <tr>
-                <td style="width: 10em">Berat Jenis 1.062</td>
-                <td>$trans['hbmcsb']</td>
-            </tr>
-            <tr>
-                <td style="width: 15em">Petugas</td>
-                <td style="width: 20em">: $trans['phb']</td>
-            </tr>
-        </table>
+        <div style="margin-left: 2.2em">
+            <span>Nilai Hb</span>
+            <span style="margin-left: 190px">: {{$nhbTrans}}</span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>Macam Donor</span>
+            <span style="margin-left: 146px">: {{$mac}}</span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>Metode Pengambilan Darah</span>
+            <span style="margin-left: 47px">: @if($met == 'b') Biasa @elseif($met == 'a') Aferesis @elseif($met == 'au') Autologus @endif</span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>Hb Metode Cupri Sulfat</span>
+            <span style="margin-left: 157px"></span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>Berat Jenis 1.053</span>
+            <span style="margin-left: 121px">: {{$hbmcsa}}</span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>Berat Jenis 1.062</span>
+            <span style="margin-left: 121px">: {{$hbmcsa}}</span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>Petugas</span>
+            <span style="margin-left: 187px">: {{$phb}}</span>
+        </div>
     </div>
     <div style="width: 98%; margin-bottom: 2em">
         <h3 style="margin-left: 1em; padding: 0.5em; background-color: #eee; color: #555">Proses Donor</h3>
-        <table style="margin-left: 2em;">
-            <tr>
-                <td style="width: 15em">Ditolak / Diambil Sebanyak </td>
-                <td style="width: 20em">: $trans['ccDarah']</td>
-            </tr>
-            <tr>
-                <td style="width: 15em">Jenis Kantong</td>
-                <td style="width: 20em">: $trans['kantongDarah']</td>
-            </tr>
-            <tr>
-                <td style="width: 15em">Pengambilan</td>
-                <td style="width: 20em">: $trans['ndonor']</td>
-            </tr>
-            <tr>
-                <td style="width: 15em">Reaksi Donor</td>
-                <td style="width: 20em">: $trans['goldarah'] ($trans['rhesus'])</td>
-            </tr>
-            <tr>
-                <td style="width: 15em">No. Kantong Darah</td>
-                <td style="width: 20em">: $trans['gender']</td>
-            </tr>
-            <tr>
-                <td style="width: 15em">Petugas</td>
-                <td style="width: 20em">: $trans['paf']</td>
-            </tr>
-        </table>
+        <div style="margin-left: 2.2em">
+            <span>Ditolak / Diambil Sebanyak</span>
+            <span style="margin-left: 56px">: {{$ccDarah}}</span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>Jenis Kantong</span>
+            <span style="margin-left: 146px">: {{$kantongDarah}}</span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>Pengambilan</span>
+            <span style="margin-left: 154px">:  {{$ambil}}</span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>Reaksi Donor</span>
+            <span style="margin-left: 150px">: {{$reakdon}}</span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>No. Kantong Darah</span>
+            <span style="margin-left: 110px">: {{$nokantong}}</span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span>Petugas</span>
+            <span style="margin-left: 188px">: {{$paf}}</span>
+        </div>
+    </div>
+    <div style="width: 98%; margin-bottom: 2em">
+        <h3 style="margin-left: 1em; padding: 0.5em; background-color: #eee; color: #555">Tanda Tangan</h3>
+        <div style="margin-left: 2.2em; height: 150px">
+            <span style="margin-left: 100px">Dokter</span>
+            <span style="margin-left: 290px">Petugas</span>
+        </div>
+        <div style="margin-left: 2.2em">
+            <span style="margin-left: 33px">(____________________)</span>
+            <span style="margin-left: 153px">(____________________)</span>
+        </div>
     </div>
 </div>
 </body>

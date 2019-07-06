@@ -248,9 +248,142 @@ class TransactionController extends Controller
     }
 
     public function generatePDF($id){
-        $trans = Transaction::find($id);
-        $pdf = PDF::loadView('generatepdf', ['trans'=>$trans]);
-        $title ='Donor - '.$trans->user->name.' - ['.$trans->timeTransEnd.']';
+        $transac = Transaction::find($id);
+        $ketstate = $this->cekstate($transac->statetrans);
+        $pawal = $this->getUserName($transac->pawal);
+        $phb = $this->getUserName($transac->phbTrans);
+        $ptekanan = $this->getUserName($transac->ptekanan);
+        $paf = $this->getUserName($transac->paftapTrans);
+        $ambil = $this->cekambil($transac->pengambilanTrans);
+        $reakdon = $this->cekreak($transac->reaksiDonTrans);
+        $met = '';
+
+        if ($reakdon == 'l'){
+            $reakdon = 'Lainnya : ('.$transac->ketReaksiDonor.')';
+        }
+
+        if ($ambil == 's'){
+            $ambil = 'Stop : '.$transac->ccstopTrans.' cc';
+        }
+
+        $trans = [
+            'udname' => $transac->utd->nama,
+            'udadd' => $transac->utd->alamat,
+            'transno' => '#Donor/'.$transac->utd->nama.'/No.'.$transac->id.'/Tanggal:'.$transac->timeTransEnd,
+            'name' => $transac->user->name,
+            'timeTransEnd' => $transac->timeTransEnd,
+            'ndonor' => $transac->user->ndonor,
+            'goldarah' => $transac->user->goldarah,
+            'rhesus' => $transac->user->rhesus,
+            'gender' => $transac->user->gender == 'l' ? 'Laki - Laki' : 'Perempuan',
+            'ketstate' => $ketstate,
+            'ketBatal' => $transac->ketBatal,
+            'q1_jamtidur' => $transac->q1_jamtidur.' jam',
+            'q2_obat' => $transac->q2_obat == 0? 'TIdak' : 'Ya',
+            'q3_mens' => $transac->q3_mens == 0? 'TIdak' : 'Ya',
+            'q4_sick' => $transac->q4_sick,
+            'beratUser' => $transac->beratUser.' Kg',
+            'tinggiUser' => $transac->tinggiUser. ' cm',
+            'suhuUser' => $transac->suhuUser.' °C',
+            'pawal' => $pawal,
+            'tekananA_user' => $transac->tekananA_user,
+            'tekananB_user' => $transac->tekananB_user,
+            'denyutNadi_user' => $transac->denyutNadi_user,
+            'petekan' => $ptekanan,
+            'nhbTrans' => $transac->nhbTrans,
+            'mac' => $transac->macDonTrans == 's' ? 'Sukarela' : 'Pengganti',
+            'met' => $transac->metDonTrans,
+            'hbmcsa' => $transac->hbmcsa,
+            'hbmcsb' => $transac->hbmcsb,
+            'phb' => $phb,
+            'ccDarah' => $transac->ccDarah.' cc',
+            'kantongDarah' => ucwords($transac->kantongDarah),
+            'ambil' => $ambil,
+            'reakdon' => $reakdon,
+            'nokantong' => $transac->noKantongDarah,
+            'paf' => $paf,
+        ];
+        $pdf = PDF::loadView('generatepdf', $trans);
+        $title = 'Donor-'.$transac->utd->nama.'|No.'.$transac->id.'|Tanggal:'.$transac->timeTransEnd.'.pdf';
+//        $title = 'Donor - '.$transac->user->name.' - ['.$transac->timeTransEnd.']';
         return $pdf->download($title);
+    }
+
+    private function cekstate($state){
+        switch ($state){
+            case 0:
+                return "Tahap 1 (Tidak Sesuai Strandar Donor)";
+                break;
+            case 1:
+                return "Tahap 1 (Sesuai Strandar Donor)";
+                break;
+            case 2:
+                return "Tahap 1 (Belum 2 Bulan)";
+                break;
+            case 3:
+                return "Tahap 1 (Sudah 2 Bulan)";
+                break;
+            case 4:
+                return "Tahap 2 (Berat Badan Tidak Sesuai)";
+                break;
+            case 5:
+                return "Tahap 2 (Besat Badan Sesuai)";
+                break;
+            case 6:
+                return "Tahap 3 (Tensi Tidak Sesuai)";
+                break;
+            case 7:
+                return "Tahap 3 (Tensi Sesuai)";
+                break;
+            case 8:
+                return "Tahap 4 (HB Tidak Sesuai)";
+                break;
+            case 9:
+                return "Tahap 4 (HB Sesuai)";
+                break;
+            case 10:
+                return "Transaksi Dibatalkan";
+                break;
+            case 11:
+                return "Transaksi Selesai";
+                break;
+            default :
+                return "";
+                break;
+        }
+    }
+
+    private function cekreak($reaksiDonTrans)
+    {
+        if($reaksiDonTrans == 'h') {
+            return 'Hematoma';
+        } elseif($reaksiDonTrans == 'p') {
+            return 'Pusing';
+        } elseif($reaksiDonTrans == 'm') {
+            return 'Muntah';
+        } elseif($reaksiDonTrans == 'l') {
+            return 'l';
+        }else{
+            return '';
+        }
+    }
+
+    private function cekambil($pengambilanTrans)
+    {
+        if($pengambilanTrans == 'l'){
+            return 'Lancar';
+        } elseif($pengambilanTrans == 't'){
+            return 'Tidak Lancar';
+        } elseif($pengambilanTrans == 's'){
+            return 's';
+        } else {
+            return '';
+        }
+    }
+
+    private function getUserName($id)
+    {
+        $u = User::find($id);
+        return $u->name;
     }
 }
