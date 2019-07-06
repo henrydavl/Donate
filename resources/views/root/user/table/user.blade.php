@@ -5,7 +5,7 @@
     <div class="card-body">
         <div class="table-responsive">
             @if(count($users) > 0)
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="user" width="100%" cellspacing="0">
                     <thead>
                     <tr class="text-center">
                         <th>Id</th>

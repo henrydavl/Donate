@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{{asset('assets/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="{{asset('assets/fonts/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/sb-admin-2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/datatables/dataTables.bootstrap4.min.css')}}">
 </head>
 
 <body id="page-top">
@@ -37,6 +39,25 @@
     <script src="{{asset('assets/js/bs-charts.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="{{asset('assets/js/theme.js')}}"></script>
+    <script src="{{asset('assets/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('assets/datatables/dataTables.bootstrap4.min.js')}}"></script>
+    <script>
+        $(document).ready( function () {
+            $('#users').DataTable();
+        } );
+        $(document).ready( function () {
+            $('#user').DataTable();
+        } );
+        $(document).ready( function () {
+            $('#ongoing').DataTable();
+        } );
+        $(document).ready( function () {
+            $('#complete').DataTable();
+        } );
+        $(document).ready( function () {
+            $('#admin').DataTable();
+        } );
+    </script>
     <script>
         $(function(){
             $("select#tipe").change(function(){
