@@ -231,6 +231,11 @@ class TransactionController extends Controller
                 ]);
                 return redirect()->route('transaction.index')->with('Success', 'Transaksi Selesai');
             }
+        }elseif ($trans->statetrans == 11){
+            $trans->update([
+                'ket' => $request->ket,
+            ]);
+            return redirect()->route('transaction.show',$id)->with('Success', 'Keterangan Berhasil Ditambahkan');
         }
         return redirect()->route('transaction.edit',$id)->with('Fail', 'Terjadi kesalahan, silahkan coba lagi');
     }

@@ -328,6 +328,23 @@
                             : <b>{{$paf}}</b>
                         </div>
                     </div>
+                    @if($trans->statetrans == 11)
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6><b>Keterangan Pasca Donor</b></h6>
+                        </div>
+                        <div class="col-md-9">
+                            : <b>{{$trans->ket ? $trans->ket : '-'}}</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#pasca">Keterangan Pasca Donor</button>
+                            @include('admin.transaction.modal.pasca')
+                        </div>
+                    </div>
+                    @endif
                 </fieldset>
             </div>
         </div>
