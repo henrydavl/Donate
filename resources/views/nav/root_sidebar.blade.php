@@ -66,6 +66,9 @@
             <li class="nav-item" role="presentation">
                 <a class="nav-link @if($pages=='cast') active @endif" href="{{ route('broadcast.index') }}"><i class="fas fa-bullhorn"></i><span>&nbsp;Broadcast Message</span></a>
             </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link @if($pages=='blog') active @endif" href="{{ route('blog.index') }}"><i class="fas fa-rss"></i><span>&nbsp;Blog</span></a>
+            </li>
             <hr class="sidebar-divider">
         </ul>
         <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>

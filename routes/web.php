@@ -44,10 +44,16 @@ Route::group(['middleware'=>['admin']], function (){
 
 Route::group(['middleware'=>['root']], function (){
     Route::get('/root/dashboard', 'Root\PageController@dashboard')->name('root');
+
     Route::get('root/user/deactivate', 'Root\UsersController@deactivate')->name('user.deactivate');
     Route::post('root/user/deactivate', 'Root\UsersController@deactivate');
     Route::get('root/user/activate', 'Root\UsersController@activate')->name('user.activate');
     Route::post('root/user/activate', 'Root\UsersController@activate');
+
+    Route::get('root/blog/deactivate', 'Root\BlogController@deactivate')->name('blog.deactivate');
+    Route::post('root/blog/deactivate', 'Root\BlogController@deactivate');
+    Route::get('root/blog/activate', 'Root\BlogController@activate')->name('blog.activate');
+    Route::post('root/blog/activate', 'Root\BlogController@activate');
 
     Route::resource('/root/users', 'Root\UsersController');
     Route::resource('/root/mitra', 'Root\MitraController');
@@ -56,6 +62,6 @@ Route::group(['middleware'=>['root']], function (){
     Route::resource('/root/utd', 'Root\UTDController');
     Route::resource('/root/transactions', 'Root\TransactionsController');
     Route::resource('/root/mobileunits', 'Root\EventsController');
-
+    Route::resource('/root/blog', 'Root\BlogController');
 });
 
